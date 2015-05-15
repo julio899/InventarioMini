@@ -31,6 +31,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             -webkit-transform: scale(.8);
             transform: scale(.8);
         }
+        div#mensaje{
+            width: 100%;
+            text-align: center;
+            font-size: 1.5em;
+            color: white;
+            padding: 5px 0 5px 0;
+            background-color: red;
+        }
     </style>
 
 
