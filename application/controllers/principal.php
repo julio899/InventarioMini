@@ -46,7 +46,7 @@ class Principal extends CI_Controller {
 	public function redireccionar(){
 		$session=$this->session->userdata('datos_usuario');
 		if($session != NULL && $session['validado']==TRUE){
-				echo "Espere mientras es Redireccionado...";
+					redirect('administrador');
 		}else{
 					$this->session->set_flashdata('error', 'Usuario o Clave Invalidos');
 					redirect();
