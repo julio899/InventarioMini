@@ -39,6 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             padding: 5px 0 5px 0;
             background-color: red;
         }
+        div#mensaje.info{
+
+            background-color: silver;
+        }
     </style>
 
 

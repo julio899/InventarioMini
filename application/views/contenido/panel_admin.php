@@ -1,3 +1,4 @@
+<?php $session=$this->session->userdata('datos_usuario');?>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -10,7 +11,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Panel de Administraci&oacute;n</a>
+                <a class="navbar-brand" href="<?php echo base_url().index_page();?>/administrador">Panel de Administraci&oacute;n</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -95,20 +96,17 @@
                     </ul>
                 </li>-->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $session['nombre_completo']?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Configuraci&oacute;n</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="<?php echo base_url().index_page();?>/principal/cerrar_session" class="btn-danger"><i class="fa fa-fw fa-power-off"></i> Desconectarse</a>
                         </li>
                     </ul>
                 </li>
@@ -119,9 +117,16 @@
                     <li class="active">
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
                     </li>
+
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Crear Producto</a>
                     </li>
+
+                    <li>
+                        <a href="charts.html"><i class="fa fa-fw fa-user"></i> Registrar Cliente</a>
+                    </li>
+
+
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>
@@ -135,18 +140,15 @@
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Acciones <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Cargar Facturas de Compras</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Ajustar Invntario</a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                     </li>
                     <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
@@ -171,6 +173,7 @@
                                 <i class="fa fa-dashboard"></i> Panel Principal
                             </li>
                         </ol>
+                        <pre><?php var_dump($this->session->userdata('datos_usuario'));?></pre>
                     </div>
                 </div>
                 <!-- /.row -->

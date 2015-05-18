@@ -23,8 +23,10 @@ class Principal extends CI_Controller {
 		//var_dump($datos);
 		if(count($datos) > 0 )
 			{		//si el usuario y clave estan correctos creo la session
+					$this->session->set_userdata('validado',TRUE);
 					$this->creacion_session($datos);
 			}else{
+					$this->session->set_userdata('validado',FALSE);
 					$this->cerrar_session();
 			}
 			$this->redireccionar();
@@ -42,12 +44,20 @@ class Principal extends CI_Controller {
 
 	public function cerrar_session(){
 		$this->session->unset_userdata('datos_usuario');
+		$this->redireccionar();
 	}
 	public function redireccionar(){
 		$session=$this->session->userdata('datos_usuario');
-		if($session != NULL && $session['validado']==TRUE){
+		$es_valido=$this->session->userdata('validado');
+
+		if($session['validado']==TRUE){
 					redirect('administrador');
-		}else{
+		}
+		if($session == NULL && $es_valido == TRUE){
+					$this->session->set_flashdata('info', 'Identifiquese par poder acceder');
+					redirect();			
+		}
+		if(  $es_valido != TRUE){
 					$this->session->set_flashdata('error', 'Usuario o Clave Invalidos');
 					redirect();
 		}

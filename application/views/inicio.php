@@ -2,6 +2,9 @@
                 <?php 
                 if($this->session->flashdata('error') ){
                     echo "<div id=\"mensaje\" class=\"tag warning\">ERROR: ".$this->session->flashdata('error')."</div>";
+                } 
+                if($this->session->flashdata('info') ){
+                    echo "<div id=\"mensaje\" class=\"tag info\"> ".$this->session->flashdata('info')."</div>";
                 }
             ?>
     <div class="login-form padding20 block-shadow">
