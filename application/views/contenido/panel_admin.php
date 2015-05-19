@@ -172,7 +172,27 @@
                             <li class="active">
                                 <i class="fa fa-dashboard"></i> Panel Principal
                             </li>
-                        </ol>
+                        </ol>   
+                        <?php
+                        /*
+                            *- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*
+                            * Verifico si hay algun mensaje de error o notificacion que mostrar *
+                            * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
+                        */
+                            if ($this->session->flashdata('ok')) {
+                                echo "<div class=\"alert alert-success\" role=\"alert\">
+                                      <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
+                                      <span class=\"sr-only\">Error:</span>".$this->session->flashdata('ok')."
+                                    </div>";
+                            }// # Fin de Alerta success ok
+
+                            if ($this->session->flashdata('error')) {
+                                echo "<div class=\"alert alert-danger\" role=\"alert\">
+                                      <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
+                                      <span class=\"sr-only\">Error:</span>".$this->session->flashdata('error')."
+                                    </div>";
+                            }// # Fin de Alerta Error
+                        ?>
                         <pre><?php var_dump($this->session->userdata('datos_usuario'));?></pre>
                     </div>
                 </div>
