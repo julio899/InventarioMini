@@ -15,9 +15,24 @@ public function __construct() {
 		return $query->row(); 
 	}//fin de funcion validacion
 
+	function registrar_producto($producto=""){
+		/* Retornos (existe -> En caso que ya exista )
+					(TRUE -> cuando se Registre )
+					(FALSE -> Error en insercion )
+		*/			$retorno=FALSE;
+		if ($this->existe_cod_producto($producto['codigo'])!=NULL) {
+			# quiere decir que hay un producto con ese codigo
+			$retorno="existe";
+		}else{
+				$retorno=$this->db->insert('productos',$producto);
+		}
+
+		return $retorno;
+	}
+
 	function registrar_categoria($cat=""){
 		/* Retornos (existe -> En caso que ya exista )
-					(TRUE -> cuando de Registre )
+					(TRUE -> cuando se Registre )
 					(FALSE -> Error en insercion )
 		*/
 					$retorno=FALSE;
@@ -30,6 +45,12 @@ public function __construct() {
 		return $retorno;
 
 	}//fin de funcion registrar_categoria
+
+	function existe_cod_producto($cod=""){
+		$query = $this->db->where('codigo',$cod);
+		$query = $this->db->get('productos');
+		return $query->row(); 
+	}//fin de existe_categoria
 
 	function existe_categoria($cat=""){
 		$query = $this->db->where('nombre_categoria',$cat);

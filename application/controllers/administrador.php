@@ -39,4 +39,37 @@ class Administrador extends CI_Controller {
 			redirect('administrador');
 		}//reg_nueva_categoria
 
+		public function reg_nuevo_producto()
+		{
+			$producto=array(	'codigo'=>'3',
+							 	'descripcion'=>'camisa LG' ,
+							 	/*'categoria'=>'sin categoria' ,*/
+							 	'compra'=>80 ,
+							 	'venta'=>100 ,
+							 	'exento'=>0 ,
+							 	/*'status'=>'A'*/
+							 	/*,'cantidad'=>0*/
+							);
+				$this->load->model('data');
+				$respuesta=$this->data->registrar_producto($producto);
+				//var_dump($respuesta);
+
+				if($respuesta==="existe"){
+						# en caso que ya se encuetre registrada
+						$this->session->set_flashdata('error',"Un producto con este CODIGO ya existe.");
+				}//fin if $respuesta==="existe"
+							
+				if($respuesta===true){
+						# Registro Satisfactorio
+						$this->session->set_flashdata('ok',"Producto Creado Satisfactoriamente.");
+					}//fin if $respuesta===true
+						
+					if($respuesta===false){
+						# No se pudo registrar error SQL
+						$this->session->set_flashdata('error',"Error SQL no se puedo insertar el producto.");
+					}//fin if $respuesta===false
+
+			
+				redirect('administrador');
+		}
 }
