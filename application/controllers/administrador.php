@@ -55,17 +55,17 @@ class Administrador extends CI_Controller {
 				//var_dump($respuesta);
 
 				if($respuesta==="existe"){
-						# en caso que ya se encuetre registrada
+						# en caso que ya se encuetre registrado un producto con ese codigo
 						$this->session->set_flashdata('error',"Un producto con este CODIGO ya existe.");
 				}//fin if $respuesta==="existe"
 							
 				if($respuesta===true){
-						# Registro Satisfactorio
+						# Registro Satisfactorio del producto
 						$this->session->set_flashdata('ok',"Producto Creado Satisfactoriamente.");
 					}//fin if $respuesta===true
 						
 					if($respuesta===false){
-						# No se pudo registrar error SQL
+						# No se pudo registrar el producto error SQL
 						$this->session->set_flashdata('error',"Error SQL no se puedo insertar el producto.");
 					}//fin if $respuesta===false
 
