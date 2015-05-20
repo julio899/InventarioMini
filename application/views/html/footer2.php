@@ -49,7 +49,7 @@
 					      
 								    <!-- Texto del nombre del producto-->
 									<div class="control-group">
-									  <label class="control-label" for="textinput">Nomre del producto a crear</label>
+									  <label class="control-label" for="textinput"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Nomre del producto a crear</label>
 									  <div class="controls">
 									    <input id="textinput" name="textinput" type="text" data-toggle="tooltip" data-placement="left" title="Titulo del Producto" class="form-control">
 									    <p class="help-block">nombre con qu se visualisara el producto.</p>
@@ -58,7 +58,7 @@
 
 								    <!-- CODIGo del nombre del producto-->
 									<div class="control-group">
-									  <label class="control-label" for="textinput">CODIGO</label>
+									  <label class="control-label" for="textinput"><span class="glyphicon glyphicon-qrcode	" aria-hidden="true"></span> CODIGO</label>
 									  <div class="controls">
 									    <input id="textinput" name="textinput" type="text" data-toggle="tooltip" data-placement="left" title="debe crear un codigo unico para este producto" class="form-control">
 									    <p class="help-block">codigo unico para el producto.</p>
@@ -79,7 +79,7 @@
 							        <label class="control-label" for="exampleInputAmount">Precio de Compra</label>
 							        <div class="input-group">
 							          <div class="input-group-addon alert-info">Bs.</div>
-							          <input type="text" class="form-control" id="exampleInputAmount" placeholder="compra" data-toggle="tooltip" data-placement="left" title="Use (.) Punto como separador decimal. ejemplo 1480.20" >
+							          <input type="text" class="form-control" id="exampleInputAmount" placeholder="compra" data-toggle="tooltip" data-placement="top" title="Use (.) Punto como separador decimal. ejemplo 1480.20" >
 							        </div>
 							      </div>
 
@@ -87,7 +87,7 @@
 							        <label class="control-label" for="exampleInputAmount">Precio de Venta</label>
 							        <div class="input-group">
 							          <div class="input-group-addon alert-success">Bs.</div>
-							          <input type="text" class="form-control" id="exampleInputAmount" placeholder="venta" data-toggle="tooltip" data-placement="left" title="Use (.) Punto como separador decimal. ejemplo 1480.20" >
+							          <input type="text" class="form-control" id="exampleInputAmount" placeholder="venta" data-toggle="tooltip" data-placement="top" title="Use (.) Punto como separador decimal. ejemplo 1480.20" >
 							        </div>
 							      </div>  
 
