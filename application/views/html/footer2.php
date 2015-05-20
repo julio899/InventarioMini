@@ -65,6 +65,15 @@
 									  </div>
 									</div>
 
+								    <!-- Cantidad en el Inventario-->
+									<div class="control-group">
+									  <label class="control-label" for="textinput"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> CANTIDAD en el Inventario</label>
+									  <div class="controls">
+									    <input id="textinput" name="textinput" type="text" data-toggle="tooltip" data-placement="left" title="Cantidad  de este producto en el Inventario" class="form-control">
+									    <p class="help-block">Si desea inicializar el inventario con una cantidad de este producto</p>
+									  </div>
+									</div>
+
 									<!-- Seleccion de categoria -->
 									<div class="control-group">
 									  <label class="control-label" for="selectbasic">Seleccione la Categoria</label>
