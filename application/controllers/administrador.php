@@ -11,7 +11,8 @@ class Administrador extends CI_Controller {
 		$this->load->view('contenido/panel_admin');
 		$this->load->view('html/footer2');
 	}
-		public function reg_nueva_categoria($cat=""){
+		public function reg_nueva_categoria(){
+			$cat=$this->input->post('txtCategoria');
 			if(strlen($cat)>3){
 				//echo "Es valida: ";
 				$cat=strtolower($cat);
@@ -34,7 +35,7 @@ class Administrador extends CI_Controller {
 					}//fin if $respuesta===false
 
 			}else{
-				$this->session->set_flashdata('error',"Muy Corta o vacia es invalida debe contener almenos 4 caracteres");
+				$this->session->set_flashdata('error',"Categoria Muy Corta o vacia es invalida debe contener almenos 4 caracteres");
 			}
 			redirect('administrador');
 		}//reg_nueva_categoria
