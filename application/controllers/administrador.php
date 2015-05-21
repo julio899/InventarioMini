@@ -6,7 +6,9 @@ class Administrador extends CI_Controller {
     parent::__construct();
 }
 		public function index()
-	{
+	{	# Inicializo y actualizo las categorias de los productos
+		$this->session->set_userdata('categorias',$this->categorias());
+
 		$this->load->view('html/head2');
 		$this->load->view('contenido/panel_admin');
 		$this->load->view('html/footer2');
@@ -39,6 +41,14 @@ class Administrador extends CI_Controller {
 			}
 			redirect('administrador');
 		}//reg_nueva_categoria
+
+
+
+		public function categorias(){
+			# cargo modelo que me trae los datos de la BD
+			$this->load->model('data');
+			return $this->data->get_categorias();
+		}//fin de funcion categorias
 
 		public function reg_nuevo_producto()
 		{

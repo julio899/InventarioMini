@@ -28,7 +28,15 @@ public function __construct() {
 		}
 
 		return $retorno;
-	}
+	}//fin de registrar_producto
+
+
+	function get_categorias(){
+		$this->db->order_by("id", "asc");
+		$query = $this->db->get('categorias');
+		return $query->result_array(); 
+	}//fin de get_categorias
+
 
 	function registrar_categoria($cat=""){
 		/* Retornos (existe -> En caso que ya exista )

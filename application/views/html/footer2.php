@@ -79,7 +79,14 @@
 									  <label class="control-label" for="selectbasic">Seleccione la Categoria</label>
 									  <div class="controls">
 									    <select id="selectbasic" name="selectbasic" class="form-control">
-									      <option>sin categoria</option>
+									    <?php 	
+									    		if($this->session->userdata('categorias')):
+									    			$categorias=$this->session->userdata('categorias');
+									    			for ($i=0; $i < count($categorias); $i++) { 
+									    				echo "<option value=\"".$categorias[$i]['id']."\">".$categorias[$i]['nombre_categoria']."</option>";
+									    			}
+									    		endif;
+									    ?>
 									    </select>
 									  </div>
 									</div>
