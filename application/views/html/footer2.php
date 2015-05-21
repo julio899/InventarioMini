@@ -83,7 +83,7 @@
 									    		if($this->session->userdata('categorias')):
 									    			$categorias=$this->session->userdata('categorias');
 									    			for ($i=0; $i < count($categorias); $i++) { 
-									    				echo "<option value=\"".$categorias[$i]['id']."\">".$categorias[$i]['nombre_categoria']."</option>";
+									    				echo "<option value=\"".$categorias[$i]['id']."\"><span class=\"badge\">".$categorias[$i]['nombre_categoria']."</span></option>";
 									    			}
 									    		endif;
 									    ?>
