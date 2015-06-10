@@ -37,6 +37,18 @@ public function __construct() {
 		return $query->result_array(); 
 	}//fin de get_categorias
 
+	function get_productos(){
+		$this->db->order_by("descripcion", "asc");
+		$this->db->select('codigo');
+		$this->db->select('descripcion');
+		$this->db->select('categoria');
+		$this->db->select('cantidad');
+		$this->db->select('compra');
+		$this->db->select('venta');
+		$query = $this->db->get('productos');
+		return $query->result(); 
+	}//fin de get_productos
+
 
 	function registrar_categoria($cat=""){
 		/* Retornos (existe -> En caso que ya exista )
