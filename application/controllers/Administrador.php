@@ -52,17 +52,8 @@ class Administrador extends CI_Controller {
 
 		public function reg_nuevo_producto()
 		{
-			$producto=array(	'codigo'=>'3',
-							 	'descripcion'=>'camisa LG' ,
-							 	/*'categoria'=>'sin categoria' ,*/
-							 	'compra'=>80 ,
-							 	'venta'=>100 ,
-							 	'exento'=>0 ,
-							 	/*'status'=>'A'*/
-							 	/*,'cantidad'=>0*/
-							);
 				$this->load->model('data');
-				$respuesta=$this->data->registrar_producto($producto);
+				$respuesta=$this->data->registrar_producto($this->input->post());
 				//var_dump($respuesta);
 
 				if($respuesta==="existe"){
@@ -83,4 +74,5 @@ class Administrador extends CI_Controller {
 			
 				redirect('administrador');
 		}
-}
+
+}//Fin de Clase
