@@ -31,6 +31,13 @@ public function __construct() {
 	}//fin de registrar_producto
 
 
+	function get_categoria($id){
+		$this->db->select('nombre_categoria');
+		$query = $this->db->where('id',$id); 
+		$query = $this->db->get('categorias');
+		return $query->row(); 
+	}//fin de get_categoria
+
 	function get_categorias(){
 		$this->db->order_by("id", "asc");
 		$query = $this->db->get('categorias');
@@ -46,6 +53,7 @@ public function __construct() {
 		$this->db->select('compra');
 		$this->db->select('venta');
 		$query = $this->db->get('productos');
+
 		return $query->result_array(); 
 	}//fin de get_productos
 

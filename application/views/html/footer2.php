@@ -135,8 +135,25 @@
 	$(function () {  
 		$('[data-toggle="tooltip"]').tooltip() 
     	$('#tabla').DataTable({
+
+    		/*Defino las columnas alineadas a la derecha*/
+			 "columnDefs": [
+			    { 
+			    	className: "dt-body-right", "targets": [ 4,5 ]
+
+			     }
+			  ],
+			/*establesco que ahora el delimitador de miles es el punto y la coma delimitador decimal*/
+			"language": {
+            				"decimal": ",",
+            				"thousands": "."
+        				},
+
+
     		"ajax": "<?php echo base_url().index_page();?>/administrador/productos"
-    	});
+
+
+		  					});
 
     	$('td.sorting_1').css('background-color','#5cb85c');
     	$('td.sorting_1').css('color','#fff');

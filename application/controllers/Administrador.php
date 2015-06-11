@@ -49,9 +49,10 @@ class Administrador extends CI_Controller {
 			echo "{\n \"data\":[";
 			foreach ($data as $key => $value) {
 				if($key>0){echo ",\n";}
-				echo  "[ \"".$value['codigo'] ."\", \"".$value['descripcion'] ."\", \"".$value['categoria'] ."\", \"".$value['cantidad'] ."\", \"".$value['compra'] ."\", \"".$value['venta'] ."\" ]";
+				$categoria=$this->data->get_categoria( $value['categoria'] );
+				echo  "[ \"".$value['codigo'] ."\", \"".$value['descripcion'] ."\", \"". $categoria->nombre_categoria ."\", \"".$value['cantidad'] ."\", \"". number_format($value['compra'], 2, ',', '.')  ."\", \"". number_format($value['venta'], 2, ',', '.') ."\" ]";
 			}
-			echo "\n]\n}";
+			echo "\n]  \n}";
 		}
 
 
