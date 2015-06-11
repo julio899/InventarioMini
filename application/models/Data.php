@@ -46,7 +46,7 @@ public function __construct() {
 		$this->db->select('compra');
 		$this->db->select('venta');
 		$query = $this->db->get('productos');
-		return $query->result(); 
+		return $query->result_array(); 
 	}//fin de get_productos
 
 

@@ -44,8 +44,14 @@ class Administrador extends CI_Controller {
 
 		public function productos(){
 			$this->load->model('data');
-			$data['data']=$this->data->get_productos();
-			echo json_encode($data);
+			//$data['data']=$this->data->get_productos();
+			$data=$this->data->get_productos();
+			echo "{\n \"data\":[";
+			foreach ($data as $key => $value) {
+				if($key>0){echo ",\n";}
+				echo  "[ \"".$value['codigo'] ."\", \"".$value['descripcion'] ."\", \"".$value['categoria'] ."\", \"".$value['cantidad'] ."\", \"".$value['compra'] ."\", \"".$value['venta'] ."\" ]";
+			}
+			echo "\n]\n}";
 		}
 
 
