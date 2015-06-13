@@ -94,7 +94,7 @@ public function __construct() {
 	function actualizar_producto($codigo,$data){
 		$this->db->where('codigo',$codigo);
 		return $this->db->update('productos', $data); 
-	}//fin de actualizar_categoria
+	}//fin de actualizar_producto
 }
 
 ?>
