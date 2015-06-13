@@ -41,6 +41,21 @@ class Administrador extends CI_Controller {
 			}
 			redirect('administrador');
 		}//reg_nueva_categoria
+		
+
+		public function actualizar_categoria(){
+			$this->load->model('data');
+			var_dump($this->data->actualizar_categoria('7',array('nombre_categoria'=>'ropa' )) );
+		}
+
+
+		public function actualizar_producto(){
+			$this->load->model('data');
+			$producto=array(
+							'descripcion'=>'camisa'
+								);
+			var_dump($this->data->actualizar_producto('3',$producto) );
+		}
 
 		public function productos(){
 			$this->load->model('data');

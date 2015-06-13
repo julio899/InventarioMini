@@ -85,6 +85,16 @@ public function __construct() {
 		$query = $this->db->get('categorias');
 		return $query->row(); 
 	}//fin de existe_categoria
+
+	function actualizar_categoria($id,$data){
+		$this->db->where('id',$id);
+		return $this->db->update('categorias', $data); 
+	}//fin de actualizar_categoria
+
+	function actualizar_producto($codigo,$data){
+		$this->db->where('codigo',$codigo);
+		return $this->db->update('productos', $data); 
+	}//fin de actualizar_categoria
 }
 
 ?>
