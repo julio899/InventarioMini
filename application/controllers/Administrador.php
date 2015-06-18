@@ -49,12 +49,10 @@ class Administrador extends CI_Controller {
 		}
 
 
-		public function actualizar_producto(){
+		public function actualizar_producto($idp){
 			$this->load->model('data');
-			$producto=array(
-							'descripcion'=>'camisa'
-								);
-			var_dump($this->data->actualizar_producto('3',$producto) );
+			$this->data->actualizar_producto($idp,$this->input->post() );
+			redirect('administrador');
 		}
 
 		public function productos(){

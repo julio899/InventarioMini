@@ -139,7 +139,7 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">Modifica&oacute;n del Producto</h4>
 			      </div>
-			        <form action="<?php //echo base_url().index_page();?>" method="post" class="form-horizontal">
+			        <form id="form_actualizar_producto" action="<?php echo base_url().index_page();?>/administrador/actualizar_producto" method="post" class="form-horizontal">
 					      <div class="modal-body">
 					      
 								    <!-- Texto del nombre del producto-->
@@ -235,8 +235,7 @@
     		/*Defino las columnas alineadas a la derecha*/
 			 "columnDefs": [
 			    { 
-			    	className: "dt-body-right", "targets": [ 4,5 ]
-
+			    	className: "dt-body-right", "targets": [ 4,5 ] 
 			     }
 			  ],
 			/*establesco que ahora el delimitador de miles es el punto y la coma delimitador decimal*/
@@ -251,7 +250,9 @@
             "targets": -1,
             "data": null,
             "defaultContent": "<button>Editar</button>"
-        	} ]
+        	}
+
+        	]
 
 
 		  					});	
@@ -268,7 +269,8 @@
 			        	$('#mventa').val(data[ 5 ]);
 			        		//establesco la categoria que tenia
 						    $( "#mcategoria").val(data[ 7 ]);
-			        
+						    var urlNueva=$("#form_actualizar_producto").attr('action') + "/"+data[ 6 ];
+			        $("#form_actualizar_producto").attr('action',urlNueva);
 			        $("#modal_MODIFICAR_producto").modal('show');
 			    } );
     	
