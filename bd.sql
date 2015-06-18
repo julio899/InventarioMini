@@ -1,96 +1,125 @@
 -- phpMyAdmin SQL Dump
--- version 2.10.3
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
--- 
+--
 -- Servidor: localhost
--- Tiempo de generación: 11-06-2015 a las 21:02:04
--- Versión del servidor: 5.0.51
--- Versión de PHP: 5.2.6
+-- Tiempo de generación: 18-06-2015 a las 16:24:16
+-- Versión del servidor: 5.5.43-0ubuntu0.14.04.1
+-- Versión de PHP: 5.5.9-1ubuntu4.9
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
--- 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
 -- Base de datos: `inventariomini`
--- 
-CREATE DATABASE `inventariomini` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+--
+CREATE DATABASE IF NOT EXISTS `inventariomini` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 USE `inventariomini`;
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `categorias`
--- 
+--
 
-CREATE TABLE `categorias` (
-  `id` int(11) NOT NULL auto_increment,
-  `nombre_categoria` varchar(50) collate utf8_spanish_ci NOT NULL,
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `categorias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_categoria` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `nombre_categoria` (`nombre_categoria`),
   KEY `nombre_categoria_2` (`nombre_categoria`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=12 ;
 
--- 
--- Volcar la base de datos para la tabla `categorias`
--- 
+--
+-- Truncar tablas antes de insertar `categorias`
+--
 
-INSERT INTO `categorias` VALUES (7, 'camisas extra largas');
-INSERT INTO `categorias` VALUES (4, 'cemento');
-INSERT INTO `categorias` VALUES (10, 'frutas');
-INSERT INTO `categorias` VALUES (5, 'nueva');
-INSERT INTO `categorias` VALUES (11, 'recarga');
-INSERT INTO `categorias` VALUES (6, 'servicio');
-INSERT INTO `categorias` VALUES (0, 'sin categoria');
-INSERT INTO `categorias` VALUES (8, 'software');
+TRUNCATE TABLE `categorias`;
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nombre_categoria`) VALUES
+(7, 'camisas extra largas'),
+(4, 'cemento'),
+(10, 'frutas'),
+(5, 'nueva'),
+(11, 'recarga'),
+(6, 'servicio'),
+(0, 'sin categoria'),
+(8, 'software');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `productos`
--- 
+--
 
-CREATE TABLE `productos` (
-  `id` int(5) NOT NULL auto_increment,
-  `codigo` varchar(25) collate utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(50) collate utf8_spanish_ci NOT NULL,
-  `categoria` varchar(20) collate utf8_spanish_ci NOT NULL default '0',
+CREATE TABLE IF NOT EXISTS `productos` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `categoria` varchar(20) COLLATE utf8_spanish_ci NOT NULL DEFAULT '0',
   `compra` float NOT NULL,
   `venta` float NOT NULL,
   `exento` int(1) NOT NULL,
-  `status` varchar(1) collate utf8_spanish_ci NOT NULL default 'A',
-  `cantidad` int(7) NOT NULL default '0',
-  PRIMARY KEY  (`id`),
-  UNIQUE KEY `codigo` (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
+  `status` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'A',
+  `cantidad` int(7) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
 
--- 
--- Volcar la base de datos para la tabla `productos`
--- 
+--
+-- Truncar tablas antes de insertar `productos`
+--
 
-INSERT INTO `productos` VALUES (1, '3', 'camisa LG', '0', 80, 100, 0, 'A', 0);
-INSERT INTO `productos` VALUES (2, 'frut001', 'mango', '10', 100, 120, 0, 'A', 100);
-INSERT INTO `productos` VALUES (3, '3030', 'zapato', '4', 4500, 5600, 0, 'A', 20);
-INSERT INTO `productos` VALUES (4, '10', 'aguacate', '4', 60, 120, 0, 'A', 300);
-INSERT INTO `productos` VALUES (5, '140', 'Recargas', '11', 800, 1000, 0, 'A', 800);
-INSERT INTO `productos` VALUES (6, '30', 'patilla', '10', 100, 130, 0, 'A', 5);
+TRUNCATE TABLE `productos`;
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `codigo`, `descripcion`, `categoria`, `compra`, `venta`, `exento`, `status`, `cantidad`) VALUES
+(1, 'frut001', 'mango', '10', 100, 120, 0, 'A', 100),
+(3, 'frut002', 'patilla', '10', 400, 560, 0, 'A', 20),
+(4, 'frut010', 'aguacate', '10', 60, 120, 0, 'A', 300),
+(5, '140', 'Recargas', '11', 800, 1000, 0, 'A', 1400),
+(6, '30', 'patilla', '10', 100, 130, 0, 'A', 5),
+(7, '200', 'Nombre de Dominio Anual', '6', 5.5, 7.8, 0, 'A', 100),
+(8, '201', 'Nombre de Dominio BI-Anual', '6', 11000, 15000, 0, 'A', 50);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `usuarios`
--- 
+--
 
-CREATE TABLE `usuarios` (
-  `id` int(7) NOT NULL auto_increment,
-  `usuario` varchar(20) collate utf8_spanish_ci NOT NULL,
-  `clave` varchar(50) collate utf8_spanish_ci NOT NULL,
-  `nombre_completo` varchar(50) collate utf8_spanish_ci NOT NULL,
-  `tipo` varchar(1) collate utf8_spanish_ci NOT NULL,
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(7) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `clave` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre_completo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
--- 
--- Volcar la base de datos para la tabla `usuarios`
--- 
+--
+-- Truncar tablas antes de insertar `usuarios`
+--
 
-INSERT INTO `usuarios` VALUES (1, 'julio899', '51c30cf5b566235f70673a8092853fa4b0bb60e4', 'Julio Vinachi', 'A');
+TRUNCATE TABLE `usuarios`;
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `clave`, `nombre_completo`, `tipo`) VALUES
+(1, 'julio899', '51c30cf5b566235f70673a8092853fa4b0bb60e4', 'Julio Vinachi', 'A');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
