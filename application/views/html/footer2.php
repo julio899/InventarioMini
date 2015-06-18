@@ -153,7 +153,19 @@
     		"ajax": "<?php echo base_url().index_page();?>/administrador/productos"
 
 
-		  					});
+		  					});	
+    	var table = $('#tabla').DataTable();
+    	
+    	/* Hover de la tabla cuando se da click una celda*/
+    	    $('#tabla tbody').on( 'click', 'tr', function () {
+		        if ( $(this).hasClass('selected') ) {
+		            $(this).removeClass('selected');
+		        }
+		        else {
+		            table.$('tr.selected').removeClass('selected');
+		            $(this).addClass('selected');
+		        }
+		    } );
 
     	$('td.sorting_1').css('background-color','#5cb85c');
     	$('td.sorting_1').css('color','#fff');

@@ -46,6 +46,7 @@ public function __construct() {
 
 	function get_productos(){
 		$this->db->order_by("descripcion", "asc");
+		$this->db->select('id');
 		$this->db->select('codigo');
 		$this->db->select('descripcion');
 		$this->db->select('categoria');
