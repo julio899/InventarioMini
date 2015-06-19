@@ -206,8 +206,8 @@
 
 									<div class="control-group"><br>
 									      <div class="checkbox alert alert-warning">
-		                                                <label>
-		                                                    <input type="checkbox" name="exento" value="1"> Exento de I.V.A.
+		                                                <label id="status">
+		                                                    <input type="checkbox" id="exento" name="exento"> Exento de I.V.A.
 		                                                </label>
 		                                  </div>
 		                            </div>  
@@ -215,7 +215,7 @@
 					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Cerrar</button>
-					        <button type="submit" class="btn btn-success" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Actualizar</button>
+					        <button type="submit" id="btn_actualizar" class="btn btn-success" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Actualizar</button>
 					      </div>
 			        </form>
 			    </div><!-- /.modal-content -->
@@ -269,8 +269,48 @@
 			        	compra=compra.replace(',', '.'); venta=venta.replace(',', '.');
 			        	$('#mcompra').val( compra );
 			        	$('#mventa').val( venta );
+
 			        		//establesco la categoria que tenia
 						    $( "#mcategoria").val(data[ 7 ]);
+						    
+						    //si era exento lo marco
+						    if(data[ 8 ]==1){ 
+						    	$("#exento").attr('checked', true);
+						    }
+						    var valor=0; if($("#exento").is('check')){valor=1;}
+						    $("#status").append( "<input id=\"temporal\" type=hidden name=\"exento\" value=\""+ valor +"\">" );
+
+						    $("#exento").change(function(){
+							 	if($("#exento").is(':checked')){valor=1;}else{valor=0;}
+
+							 	console.log($("#exento").is(':checked'));
+								$("#temporal").attr('value', valor);							 	
+							 });
+						    
+						    //$("#exento").is(':checked');
+
+    	    					/*{
+							 		$("#status").append( "<input id=\"temporal\" type=hidden name=\"exento\" value=\"1\">" );
+							 	}else{
+							 		$("#temporal").attr( "value",'0' );
+							 	
+							 	}*/
+							
+							 /*$("#exento").change(function(){
+							 	//alert($("#exento").is(':checked') );
+							 	
+							 });*/
+	
+						    $("#btn_actualizar").click(function(){
+								//$("#exento").remove();
+								if($("#exento").is(':checked')){valor=1;}else{valor=0;}
+								$("#exento").attr('value', valor);	
+								$("#temporal").attr('value', valor);		
+								console.log("click en actualizar  status exento"+ $("#exento").is(':checked')+" / valor: "+valor);
+						    });
+						    	
+	
+
 						    var urlNueva=$("#form_actualizar_producto").attr('action') + "/"+data[ 6 ];
 			        $("#form_actualizar_producto").attr('action',urlNueva);
 			        $("#modal_MODIFICAR_producto").modal('show');

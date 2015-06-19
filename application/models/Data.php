@@ -53,6 +53,7 @@ public function __construct() {
 		$this->db->select('cantidad');
 		$this->db->select('compra');
 		$this->db->select('venta');
+		$this->db->select('exento');
 		$query = $this->db->get('productos');
 
 		return $query->result_array(); 
