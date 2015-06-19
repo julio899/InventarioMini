@@ -191,7 +191,7 @@
 							        <label class="control-label" for="compra">Precio de Compra</label>
 							        <div class="input-group">
 							          <div class="input-group-addon alert-info">Bs.</div>
-							          <input type="text" class="form-control" name="compra" id="mcompra" placeholder="compra" data-toggle="tooltip" data-placement="top" title="Use (.) Punto como separador decimal. ejemplo 1480.20" >
+							          <input type="number"  step="0.01" class="form-control" name="compra" id="mcompra" placeholder="compra" data-toggle="tooltip" data-placement="top" title="Use (.) Punto como separador decimal. ejemplo 1480.20" >
 							        </div>
 							      </div>
 
@@ -199,7 +199,7 @@
 							        <label class="control-label" for="venta">Precio de Venta</label>
 							        <div class="input-group">
 							          <div class="input-group-addon alert-success">Bs.</div>
-							          <input type="text" class="form-control" name="venta" id="mventa" placeholder="venta" data-toggle="tooltip" data-placement="top" title="Use (.) Punto como separador decimal. ejemplo 1480.20" >
+							          <input type="number"  step="0.01"  class="form-control" name="venta" id="mventa" placeholder="venta" data-toggle="tooltip" data-placement="top" title="Use (.) Punto como separador decimal. ejemplo 1480.20" >
 							        </div>
 							      </div>
 
