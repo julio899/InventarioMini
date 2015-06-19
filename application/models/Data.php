@@ -93,6 +93,7 @@ public function __construct() {
 	}//fin de actualizar_categoria
 
 	function actualizar_producto($id,$data){
+		//var_dump($data);
 		$this->db->where('id',$id);
 		return $this->db->update('productos', $data); 
 	}//fin de actualizar_producto

@@ -265,8 +265,10 @@
 			         	$('#mdescripcion').val(data[ 1 ]);
 			        	$('#mcodigo').val(data[ 0 ]);
 			        	$('#mcantidad').val(data[ 3 ]);
-			        	$('#mcompra').val(data[ 4 ]);
-			        	$('#mventa').val(data[ 5 ]);
+			        	var compra=data[ 4 ].replace('.', ''); var venta=data[ 5 ].replace('.', '');
+			        	compra=compra.replace(',', '.'); venta=venta.replace(',', '.');
+			        	$('#mcompra').val( compra );
+			        	$('#mventa').val( venta );
 			        		//establesco la categoria que tenia
 						    $( "#mcategoria").val(data[ 7 ]);
 						    var urlNueva=$("#form_actualizar_producto").attr('action') + "/"+data[ 6 ];
