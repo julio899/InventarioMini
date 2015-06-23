@@ -30,6 +30,9 @@ public function __construct() {
 		return $retorno;
 	}//fin de registrar_producto
 
+	function registrar_proveedor($proveedor){
+		return $this->db->insert('proveedores',$proveedor);
+	}//fin de registrar_proveedor
 
 	function get_categoria($id){
 		$this->db->select('nombre_categoria');
@@ -87,6 +90,12 @@ public function __construct() {
 		$query = $this->db->get('categorias');
 		return $query->row(); 
 	}//fin de existe_categoria
+
+	function existe_cod_proveedor($cod=""){
+		$query = $this->db->where('codigo',$cod);
+		$query = $this->db->get('proveedores');
+		return $query->row(); 
+	}//fin de existe_cod_proveedor
 
 	function actualizar_categoria($id,$data){
 		$this->db->where('id',$id);

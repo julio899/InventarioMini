@@ -42,11 +42,34 @@ class Administrador extends CI_Controller {
 			redirect('administrador');
 		}//reg_nueva_categoria
 		
+		public function reg_nuevo_proveedor(){
+			$this->load->model('data');
+			# si existe_cod_proveedor devuelve NULL quiere decir que no existe ese cod de proveedor
+			if(  $this->data->existe_cod_proveedor( $this->input->post('codigo') ) == NULL){
+				$datos=array( 	'razon'		=>$this->input->post('proveedor'), 
+								'rif'		=>$this->input->post('rif'), 
+								'direccion'	=>$this->input->post('direccion'), 
+								'telefono'	=>$this->input->post('telefono'),
+								'codigo'	=>$this->input->post('codigo')
+							);
+				if($this->data->registrar_proveedor($datos) == true){
+		
+					$this->session->set_flashdata('ok',"Proveedor Creado Satisfactoriamente.");
+
+				}//fin de if registrar_proveedor
+			}else{ $this->session->set_flashdata('error',"ERROR: Ha ocurrido un error ya que Un Proveedor con ese CODIGO ya existe."); }
+			redirect('administrador');
+		}//fin de reg_nuevo_proveedor
 
 		public function actualizar_categoria(){
 			$this->load->model('data');
 			var_dump($this->data->actualizar_categoria('7',array('nombre_categoria'=>'ropa' )) );
 		}
+
+		public function proveedor_existe($cod=""){			
+			$this->load->model('data');
+			var_dump( $this->data->existe_cod_proveedor( $cod ) );
+		}//fin de proveedor_existe
 
 
 		public function actualizar_producto($idp){
