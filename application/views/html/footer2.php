@@ -408,9 +408,11 @@
 					  url: "<?php echo base_url().index_page();?>/administrador/proveedor_existe/"+$(this).val()
 					})
 					  .done(function( msg ) {
-					    if(msg){
-					    	console.log( msg=="NULL\n" );
+					    if(msg=="NULL\n"){
+					    	console.log("codigo disponible");
 					    
+					    }else{
+					    	console.log("no esta disponible este codigo");
 					    }
 
 					  });
