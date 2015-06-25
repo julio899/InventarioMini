@@ -143,9 +143,6 @@
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#modal_nuevo_producto"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Crear Producto</a>
                             </li>
-                            <li>
-                                <a href="#"><span class="glyphicon glyphicon-resize-small" aria-hidden="true"></span> Ajustar Invntario</a>
-                            </li>
                         </ul>
                     </li>
                     <li>

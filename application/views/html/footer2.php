@@ -155,7 +155,7 @@
 									<div class="control-group">
 									  <label class="control-label" for="codigo"><span class="glyphicon glyphicon-qrcode	" aria-hidden="true"></span> CODIGO</label>
 									  <div class="controls">
-									    <input id="proveedor_codigo" name="codigo" type="text" data-toggle="tooltip" data-placement="left" title="debe crear un codigo unico para este proveedor" class="form-control">
+									    <input id="proveedor_codigo" name="codigo" type="text" data-toggle="tooltip" data-placement="left" title="debe crear un codigo unico para este proveedor" autocomplete="off" class="form-control">
 									    <p class="help-block proveedor_help">cree un codigo unico para el proveedor.</p>
 									  </div>
 									</div>
@@ -188,7 +188,7 @@
 					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Cerrar</button>
-					        <button type="submit" id="btn_actualizar" class="btn btn-success" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Guardar</button>
+					        <button type="submit" id="btn_guardar_proveedor" class="btn btn-success" ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Guardar</button>
 					      </div>
 			        </form>
 			    </div><!-- /.modal-content -->
@@ -409,10 +409,25 @@
 					})
 					  .done(function( msg ) {
 					    if(msg=="NULL\n"){
-					    	console.log("codigo disponible");
-					    
+					    	if(value>0){
+
+						    	console.log("codigo disponible");
+						    	$("p.proveedor_help").html("codigo disponible");
+						    	$("p.proveedor_help").css('color','blue');
+					    		$("#btn_guardar_proveedor").attr("class", "btn btn-success");
+						    
+					    	}
+					    	if(value==0){	    	
+					    					$("#btn_guardar_proveedor").attr("class", "btn btn-success disabled");
+					    					$("p.proveedor_help").css('color','black');
+					    					$("p.proveedor_help").html("Por favor Cree un codigo para este proveedor");
+					    				}
 					    }else{
 					    	console.log("no esta disponible este codigo");
+
+					    	$("p.proveedor_help").css('color','red');
+					    	$("p.proveedor_help").html("Lo sentimos pero no esta disponible este codigo");
+					    	$("#btn_guardar_proveedor").attr("class", "btn btn-success disabled");
 					    }
 
 					  });
