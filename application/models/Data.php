@@ -47,6 +47,12 @@ public function __construct() {
 		return $query->result_array(); 
 	}//fin de get_categorias
 
+	function get_proveedores(){
+		$this->db->order_by("razon", "asc");
+		$query = $this->db->get('proveedores');
+		return $query->result_array(); 
+	}//fin de get_proveedores
+
 	function get_productos(){
 		$this->db->order_by("descripcion", "asc");
 		$this->db->select('id');

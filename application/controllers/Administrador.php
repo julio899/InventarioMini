@@ -14,6 +14,16 @@ class Administrador extends CI_Controller {
 		$this->load->view('contenido/panel_admin');
 		$this->load->view('html/footer2');
 	}
+
+		public function cargar_factura()
+	{	
+				$this->load->model('data');
+		$data=array('proveedores'=>$this->data->get_proveedores() );
+		
+		$this->load->view('html/head2');
+		$this->load->view('contenido/panel_carga_facturas',$data);
+		$this->load->view('html/footer2');
+	}
 		public function reg_nueva_categoria(){
 			$cat=$this->input->post('txtCategoria');
 			if(strlen($cat)>3){

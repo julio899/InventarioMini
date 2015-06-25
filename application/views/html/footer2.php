@@ -5,6 +5,8 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
 
+    <!-- Datapiker -->
+	<script src="<?php echo base_url();?>js/jquery-ui.js"></script>
     <!-- Morris Charts JavaScript -->
     <!-- <script src="<?php echo base_url();?>js/plugins/morris/raphael.min.js"></script> -->
     <!-- <script src="<?php echo base_url();?>js/plugins/morris/morris.min.js"></script> -->
@@ -18,8 +20,10 @@
 
 
 <script>
+
 	/*Activamos los eventos de los titulos o herramienta de tip (tooltip)*/
-	$(function () {  
+	$(function () {
+		$("#fecha_fact" ).datepicker();  
 		$('[data-toggle="tooltip"]').tooltip() 
     	$('#tabla').DataTable({
 
@@ -163,6 +167,17 @@
 
 	});
 </script>
+
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-8">
+                        <div class="alert alert-info ">
+                            <i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!
+                        </div>
+                    </div>
+
+                    <div class="col-lg-1"></div>
+                </div>
 </body>
 
 </html>
