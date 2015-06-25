@@ -112,45 +112,8 @@
                 </li>
 
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="<?php echo base_url().index_page();?>/administrador"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
-                    </li>
+            <?php $this->load->view('sidebar');?>
 
-
-                    <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-user"></i> Registrar Cliente</a>
-                    </li>
-
-
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Inventario <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#modal_nuevo_proveedor"><span class="fa fa-truck" aria-hidden="true"></span> Crear Proveedor</a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> Cargar Facturas de Compras</a>
-                            </li>
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#modal_nueva_categoria"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Crear Categoria</a>
-                            </li>
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#modal_nuevo_producto"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Crear Producto</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="<?php echo index_page();?>"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
         </nav>
 
         <div id="page-wrapper">
@@ -168,50 +131,50 @@
                                 <i class="fa fa-dashboard"></i> Panel Principal
                             </li>
                         </ol>   
-                        <?php
-                        /*
-                            *- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*
-                            * Verifico si hay algun mensaje de error o notificacion que mostrar *
-                            * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
-                        */
-                            if ($this->session->flashdata('ok')) {
-                                echo "<div class=\"alert alert-success\" role=\"alert\">
-                                      <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
-                                      <span class=\"sr-only\">Error:</span>".$this->session->flashdata('ok')."
-                                    </div>";
-                            }// # Fin de Alerta success ok
-
-                            if ($this->session->flashdata('error')) {
-                                echo "<div class=\"alert alert-danger\" role=\"alert\">
-                                      <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
-                                      <span class=\"sr-only\">Error:</span>".$this->session->flashdata('error')."
-                                    </div>";
-                            }// # Fin de Alerta Error
-                        ?>
                         
-                    <!-- Tabla de Inventario -->
-<!--anterior class="display nowrap dataTable dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;"-->
-<table id="tabla" class="display table " width="100%" cellspacing="0">
-                    <thead>
-                        <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 60px;">Codigo</th>
-                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 250px;">Nombre</th>
-                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 102px;">Categoria</th>
-                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 42px;">Cantidad</th>
-                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 92px;">Compra</th>
-                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 79px;">Venta</th>
-                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Opciones: activate to sort column ascending" style="width: 60px;">Opciones</th></tr>
-                    </thead>
+                                    <?php
+                                    /*
+                                        *- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*
+                                        * Verifico si hay algun mensaje de error o notificacion que mostrar *
+                                        * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
+                                    */
+                                        if ($this->session->flashdata('ok')) {
+                                            echo "<div class=\"alert alert-success\" role=\"alert\">
+                                                  <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
+                                                  <span class=\"sr-only\">Error:</span>".$this->session->flashdata('ok')."
+                                                </div>";
+                                        }// # Fin de Alerta success ok
 
-                    <tbody>
-                                
-                    </tbody>
-                </table>
+                                        if ($this->session->flashdata('error')) {
+                                            echo "<div class=\"alert alert-danger\" role=\"alert\">
+                                                  <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
+                                                  <span class=\"sr-only\">Error:</span>".$this->session->flashdata('error')."
+                                                </div>";
+                                        }// # Fin de Alerta Error
+                                    ?>
+                                    
 
+                                <!-- Tabla de Inventario -->
+                                <!--anterior class="display nowrap dataTable dtr-inline" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;"-->
+                                <table id="tabla" class="display table " width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 60px;">Codigo</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 250px;">Nombre</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 102px;">Categoria</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 42px;">Cantidad</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 92px;">Compra</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 79px;">Venta</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="Opciones: activate to sort column ascending" style="width: 60px;">Opciones</th></tr>
+                                    </thead>
 
+                                    <tbody>
+                                                
+                                    </tbody>
+                                </table>
                     <!-- Fin de Tabla -->
 
-                    </div>
+                    </div><!-- fin de col-lg-12-->
                 </div>
                 <!-- /.row -->
 

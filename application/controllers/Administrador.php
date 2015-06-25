@@ -5,6 +5,7 @@ class Administrador extends CI_Controller {
 	public function __construct() {        
     parent::__construct();
 }
+
 		public function index()
 	{	# Inicializo y actualizo las categorias de los productos
 		$this->session->set_userdata('categorias',$this->categorias());
