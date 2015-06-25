@@ -417,7 +417,7 @@
 					    		$("#btn_guardar_proveedor").attr("class", "btn btn-success");
 						    
 					    	}
-					    	if(value==0){	    	
+					    	if(value==0){	//si no ha escrito ningun codigo desabilito el boton de guardar    	
 					    					$("#btn_guardar_proveedor").attr("class", "btn btn-success disabled");
 					    					$("p.proveedor_help").css('color','black');
 					    					$("p.proveedor_help").html("Por favor Cree un codigo para este proveedor");
