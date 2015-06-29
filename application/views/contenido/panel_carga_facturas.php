@@ -69,6 +69,7 @@
                                                     <div class="form-group">
                                                         <label>Proveedor</label>
                                                         <select class="form-control">
+                                                        <option value="0"></option>
                                                             <?php
                                                                 if (isset($proveedores)) {
                                                                     
