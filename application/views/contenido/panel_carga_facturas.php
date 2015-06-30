@@ -63,7 +63,7 @@
 
                                                     <div class="form-group">
                                                         <label>Indique la Fecha</label>
-                                                        <input id="fecha_fact" type="date" data-provide="datepicker" placeholder="AAAA-mm-dd">
+                                                        <input id="fecha_fact" type="text" data-provide="datepicker" placeholder="AAAA-mm-dd">
                                                     </div>
 
                                                     <div class="form-group">
