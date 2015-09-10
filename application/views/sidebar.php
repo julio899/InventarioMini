@@ -22,7 +22,7 @@
                                 <a href="#" data-toggle="modal" data-target="#modal_nuevo_proveedor"><span class="fa fa-truck" aria-hidden="true"></span> Crear Proveedor</a>
                             </li>
                             <li>
-                                <a href="#"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> Cargar Facturas de Compras</a>
+                                <a href="<?php echo base_url().index_page();?>/administrador/cargar_factura"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> Cargar Facturas de Compras</a>
                             </li>
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#modal_nueva_categoria"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Crear Categoria</a>

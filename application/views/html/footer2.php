@@ -165,7 +165,14 @@
     	}).keyup();
 
 
+		// Evento Activando Modals seccion [ administrador/cargar_factura ]
+    	$("#new_proveedor").click(function(){
+    		$("#modal_nuevo_proveedor").modal('show');
+    	});
+    	
+
 	});
+
 </script>
 
                 <div class="row">

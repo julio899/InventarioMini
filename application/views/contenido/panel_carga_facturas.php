@@ -115,7 +115,7 @@
                                                 <!-- /.panel-heading -->
                                                 <div class="panel-body">
                                                     <div class="list-group">
-                                                        <a href="#" class="list-group-item">
+                                                        <a href="#" id="new_proveedor" class="list-group-item">
                                                             <i class="fa fa-upload fa-fw"></i> Nuevo proveedor
                                                             <span class="pull-right text-muted small"><em>Registrar Uno Nuevo</em>
                                                             </span>
