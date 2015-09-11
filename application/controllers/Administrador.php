@@ -25,7 +25,7 @@ class Administrador extends CI_Controller {
 
 		public function cargar_factura()
 	{	
-				$this->load->model('data');
+		$this->load->model('data');
 		$data=array('proveedores'=>$this->data->get_proveedores() );
 		
 		$this->load->view('html/head2');
@@ -142,4 +142,7 @@ class Administrador extends CI_Controller {
 				redirect('administrador');
 		}
 
+		public function reg_nuevo_cliente(){
+			var_dump($this->input->post());
+		}
 }//Fin de Clase

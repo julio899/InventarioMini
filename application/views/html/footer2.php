@@ -12,11 +12,14 @@
     <!-- <script src="<?php echo base_url();?>js/plugins/morris/morris.min.js"></script> -->
     <!-- <script src="<?php echo base_url();?>js/plugins/morris/morris-data.js"></script> -->
 
+	<?php if( $this->session->userdata['datos_usuario']['tipo']=='A'):  ?>
 	<!-- Inicio la carga de los Modals-->
 	<?php $this->load->view('modal/crear_categoria');?>
 	<?php $this->load->view('modal/crear_producto');?>
 	<?php $this->load->view('modal/modificar_producto');?>
 	<?php $this->load->view('modal/crear_proveedor');?>
+	<?php $this->load->view('modal/crear_cliente');?>
+	<?php endif;?>
 
 
 <script>

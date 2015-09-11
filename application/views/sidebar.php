@@ -11,7 +11,7 @@
 
 
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-user"></i> Registrar Cliente</a>
+                        <a href="#" data-toggle="modal" data-target="#modal_nuevo_cliente"><i class="fa fa-fw fa-user"></i> Registrar Cliente</a>
                     </li>
 
 
