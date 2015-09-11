@@ -143,6 +143,18 @@ class Administrador extends CI_Controller {
 		}
 
 		public function reg_nuevo_cliente(){
-			var_dump($this->input->post());
+			$this->load->library('form_validation');
+
+			$this->form_validation->set_rules('razon', 'RAZON SOCIAL', 'required');
+			$this->form_validation->set_rules('rif', 'RIF', 'required');
+			$this->form_validation->set_rules('direccion', 'DIRECCION', 'required');
+			 if ($this->form_validation->run() == FALSE)
+    			{
+
+					$this->session->set_flashdata('error',"Error en Validacion de datos. ".validation_errors('<div class="error">', '</div>'));
+    				redirect('administrador');
+    			}else{
+    				var_dump($this->input->post());	
+    			}
 		}
 }//Fin de Clase
