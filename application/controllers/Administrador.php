@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No se permite acceso directo a script');
 class Administrador extends CI_Controller {
 	public function __construct() {        
     parent::__construct();
-}
+    $this->verifica_administrador();
+    }
 
 		public function index()
 	{	# Inicializo y actualizo las categorias de los productos
@@ -14,6 +15,13 @@ class Administrador extends CI_Controller {
 		$this->load->view('contenido/panel_admin');
 		$this->load->view('html/footer2');
 	}
+		public function verifica_administrador(){
+			if($this->session->userdata['datos_usuario']['tipo']!='A'){
+				echo "<pre>Necesita acceder con una cuenta de tipo Administrador para poder acceder a este modulo.</pre>";
+				echo "<a href=\"".base_url()."\">Click Aqui para regresar</a>";
+				exit();
+			}
+		}
 
 		public function cargar_factura()
 	{	

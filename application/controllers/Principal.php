@@ -36,10 +36,12 @@ class Principal extends CI_Controller {
 		 $datos_usuario=array(
 		 						'usuario' => $datos['usuario'], 
 		 						'nombre_completo'=>$datos['nombre_completo'], 
+		 						'tipo'=>$datos['tipo'], 
 		 						'validado'=>TRUE
 		 						);
 
 		 $this->session->set_userdata('datos_usuario',$datos_usuario);
+		 //var_dump($datos); exit();
 	}//fin creacion_session
 
 	public function cerrar_session(){
@@ -50,9 +52,14 @@ class Principal extends CI_Controller {
 		$session=$this->session->userdata('datos_usuario');
 		$es_valido=$this->session->userdata('validado');
 
-		if($session['validado']==TRUE){
+		if( $session['validado']==TRUE && $this->session->userdata['datos_usuario']['tipo']=='A' ){
 					redirect('administrador');
 		}
+
+		if( $session['validado']==TRUE && $this->session->userdata['datos_usuario']['tipo']=='C' ){
+					redirect('contador');
+		}
+
 		if($session == NULL && $es_valido == TRUE){
 					$this->session->set_flashdata('info', 'Identifiquese par poder acceder');
 					redirect();			

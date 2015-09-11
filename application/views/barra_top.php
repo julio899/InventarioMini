@@ -7,7 +7,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url().index_page();?>/administrador">Panel de Administraci&oacute;n</a>
+                <?php if($this->session->userdata['datos_usuario']['tipo']=='A'):?>
+                    <a class="navbar-brand" href="<?php echo base_url().index_page();?>administrador">Panel de Administraci&oacute;n</a>
+                <?php endif;?>
+
+                <?php if($this->session->userdata['datos_usuario']['tipo']=='C'):?>
+                    <a class="navbar-brand" href="<?php echo base_url().index_page();?>contador">Panel de Contador</a>
+                <?php endif;?>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
