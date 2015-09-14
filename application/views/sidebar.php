@@ -104,33 +104,16 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
+
                     <?php endif; ?>
-                    <!--
-                    <li>
-                        <a href="#opcion1"><i class="fa fa-fw fa-user"></i> Opcion1 </a>
-                    </li>
 
 
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Creacion de un tipo de Cuenta</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Cargar <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#modal_nuevo_proveedor"><span class="fa fa-truck" aria-hidden="true"></span> Cargar Facturas de Compras</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo base_url().index_page();?>/administrador/cargar_factura"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> Cargar Facturas de Ventas</a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="<?php echo index_page();?>"><i class="fa fa-fw fa-dashboard"></i> Reportes</a>
-                    </li>-->
                 </ul>
                 <!-- Fin de Opciones del Contador-->
+
+
+                
             <?php endif;?>
             </div>
             <!-- /.navbar-collapse -->
