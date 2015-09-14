@@ -68,7 +68,6 @@ public function __construct() {
 		return $query->result_array(); 
 	}//fin de get_productos
 
-
 	function registrar_categoria($cat=""){
 		/* Retornos (existe -> En caso que ya exista )
 					(TRUE -> cuando se Registre )
@@ -113,6 +112,25 @@ public function __construct() {
 		$this->db->where('id',$id);
 		return $this->db->update('productos', $data); 
 	}//fin de actualizar_producto
+
+	function get_empresas(){
+		$this->db->order_by("codigo", "asc");
+		$query = $this->db->get('empresas');
+
+		return $query->result_array(); 
+	}//fin de get_empresas
+
+
+	function reg_empresa($datos){
+		return $this->db->insert('empresas', $datos);
+	}//fin de reg_empresa
+
+	function existe_empresa($datos)
+	{
+		$this->db->where('codigo',$datos['codigo']);
+		$query = $this->db->get('empresas');
+		return $query->row(); 
+	}//fin de existe_empresa
 }
 
 ?>

@@ -73,15 +73,19 @@
                                         <span class="caret"></span>
                                       </button>
                                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#">Madera magdaleno, C.A.</a></li>
-                                        <li><a href="#">Camiones y Ruedas C.A.</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li><a href="#">Separated link</a></li>
+
+                                    <?php if(isset($empresas))
+                                            {
+                                                for ($i=0; $i <count($empresas) ; $i++) { 
+                                                    echo "<li><a href=\"#\">[ COD: ". $empresas[$i]['codigo'] ." ] ". strtoupper($empresas[$i]['razon']) ."</a></li>";
+                                                }
+                                            } ?>
                                       </ul>
+
                                     </div> 
                                 </div>
                                 <div class="panel-footer">
-                                   <a href="#" class="btn btn-success">Crear Una Empresa</a> 
+                                   <a href="#" id="btn-crear-empresa" data-toggle="modal" data-target="#modal_nueva_empresa" class="btn btn-success">Crear Una Empresa</a> 
                                 </div>
                             </div>
                         </div>
