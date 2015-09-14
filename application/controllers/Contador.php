@@ -31,10 +31,10 @@ class Contador extends CI_Controller {
 
 			$this->load->library('form_validation');
 
-			$this->form_validation->set_rules('codigo', 'CODIGO', 'required');
-			$this->form_validation->set_rules('razon', 'RAZON SOCIAL', 'required');
-			$this->form_validation->set_rules('rif', 'RIF', 'required');
-			$this->form_validation->set_rules('direccion', 'DIRECCION', 'required');
+			$this->form_validation->set_rules('codigo', 'CODIGO', 'trim|required');
+			$this->form_validation->set_rules('razon', 'RAZON SOCIAL', 'trim|required');
+			$this->form_validation->set_rules('rif', 'RIF', 'trim|required');
+			$this->form_validation->set_rules('direccion', 'DIRECCION', 'trim|required');
 			 if ($this->form_validation->run() == FALSE)
     			{
 
@@ -68,6 +68,18 @@ class Contador extends CI_Controller {
     			}
 	}
 
-
+	public function seleccionar_empresa($codigo="")
+	{
+		$this->load->model('data');
+		$empresa=$this->data->get_empresa($codigo);
+		if(count($empresa)==0){
+			$this->session->set_flashdata('error',"codigo de empresa invalido");
+			redirect('contador');
+		}else{
+			$this->session->set_userdata('empresa_seleccionada',$empresa[0]);
+			redirect('contador');
+		}
+		//$this->session->set_userdata['empresa_seleccionada']=
+	}
 
 }//fin de clase

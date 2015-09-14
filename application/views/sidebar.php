@@ -48,7 +48,63 @@
                     <li class="active">
                         <a href="<?php echo base_url().index_page();?>contador"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
                     </li>
+                    <?php if($this->session->userdata('empresa_seleccionada')): ?>
+                    <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Cargar Facturas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="#">Gastos</a>
+                                </li>
+                                <li>
+                                    <a href="#">Ventas</a>
+                                </li>
+                                <li>
+                                    <a href="#">Compras <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level collapse">
+                                        <li>
+                                            <a href="#">Mercancia General</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Mercancia Detallada</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
 
+                        </li>
+                        <li class="">
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+                                <li>
+                                    <a href="#">Second Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="#">Second Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="#">Third Level <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level collapse">
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    <?php endif; ?>
                     <!--
                     <li>
                         <a href="#opcion1"><i class="fa fa-fw fa-user"></i> Opcion1 </a>

@@ -10,7 +10,9 @@
         </nav>
 
         <div id="page-wrapper">
+        <?php if( $this->session->userdata('empresa_seleccionada')  ){ $this->load->view('contenido/panel_contador_empresa'); } ?>
 
+        <?php if(!$this->session->userdata('empresa_seleccionada')): ?>
             <div class="container-fluid">
 
                 <!-- Page Heading -->
@@ -77,7 +79,7 @@
                                     <?php if(isset($empresas))
                                             {
                                                 for ($i=0; $i <count($empresas) ; $i++) { 
-                                                    echo "<li><a href=\"#\">[ COD: ". $empresas[$i]['codigo'] ." ] ". strtoupper($empresas[$i]['razon']) ."</a></li>";
+                                                    echo "<li><a href=\"".base_url()."contador/seleccionar_empresa/".$empresas[$i]['codigo']."\">[ COD: ". $empresas[$i]['codigo'] ." ] ". strtoupper($empresas[$i]['razon']) ."</a></li>";
                                                 }
                                             } ?>
                                       </ul>
@@ -95,12 +97,9 @@
                         <!-- /.col-lg-4 -->
                     </div>
 
-
-
-
             </div>
             <!-- /.container-fluid -->
-
+        <?php endif; ?>
         </div>
         <!-- /#page-wrapper -->
 

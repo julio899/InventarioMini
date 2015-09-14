@@ -46,6 +46,7 @@ class Principal extends CI_Controller {
 
 	public function cerrar_session(){
 		$this->session->unset_userdata('datos_usuario');
+		$this->session->unset_userdata('empresa_seleccionada');
 		$this->redireccionar();
 	}
 	public function redireccionar(){

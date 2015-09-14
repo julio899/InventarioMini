@@ -121,6 +121,12 @@ public function __construct() {
 	}//fin de get_empresas
 
 
+	function get_empresa($cod){		
+		$this->db->where('codigo',$cod);
+		$query = $this->db->get('empresas');		
+		return $query->result_array(); 
+	}
+
 	function reg_empresa($datos){
 		return $this->db->insert('empresas', $datos);
 	}//fin de reg_empresa
