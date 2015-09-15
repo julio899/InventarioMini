@@ -12,15 +12,15 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>/index.html</td>
-                                        <td>1265</td>
-                                        <td>32.3%</td>
+                                        <td>compra de mercancia</td>
+                                        <td>Imprenta la Tinta</td>
+                                        <td>01-09-2015</td>
                                         <td>$321.33</td>
                                     </tr>
                                     <tr>
-                                        <td>/about.html</td>
-                                        <td>261</td>
-                                        <td>33.3%</td>
+                                        <td>compra de impresora</td>
+                                        <td>K-TUX, C.A</td>
+                                        <td>07-09-2015</td>
                                         <td>$234.12</td>
                                     </tr>
                                     <tr>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
-		                            <a href="#" class="list-group-item active">Compras del Mes Actual</a>
+		                            <a href="#" class="list-group-item active"><i class="fa fa-hand-o-right">  </i> Compras del Mes Actual</a>
 		                            <a href="#" class="list-group-item"><i class="fa fa-question-circle">  </i> Consultar Mes Especifico</a>
 		                            <a href="#" class="list-group-item"><i class="fa fa-plus-circle">  </i> Crear Nuevo Proveedor</a>
 		                            <a href="#" class="list-group-item"><i class="fa fa-search">  </i> Consultar Proveedor Especifico</a>
