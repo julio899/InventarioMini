@@ -52,11 +52,12 @@
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> CARGAR FACTURAS <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
+                        <!-- Para referenciar a un modal data-toggle="modal" data-target="#id_del_modal" -->
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#modal_nuevo_proveedor"><span class="fa fa-truck" aria-hidden="true"></span> FACT. COMPRAS</a>
+                                <a href="<?php echo base_url().index_page();?>contador/pagina/fac_compras" ><span class="fa fa-truck" aria-hidden="true"></span> FACT. COMPRAS</a>
                             </li>
                             <li>
-                                <a href="http://localhost/InventarioMini//administrador/cargar_factura"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> FACT. VENTAS</a>
+                                <a href="http://localhost/InventarioMini/administrador/cargar_factura"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> FACT. VENTAS</a>
                             </li>
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#modal_nueva_categoria"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> GASTOS</a>

@@ -78,7 +78,8 @@ class Contador extends CI_Controller {
 	}
 
 	public function seleccionar_empresa($codigo="")
-	{
+	{	
+		$this->session->set_userdata('pagina','home');
 		$this->load->model('data');
 		$empresa=$this->data->get_empresa($codigo);
 		if(count($empresa)==0){
@@ -88,7 +89,13 @@ class Contador extends CI_Controller {
 			$this->session->set_userdata('empresa_seleccionada',$empresa[0]);
 			redirect('contador');
 		}
+
 		//$this->session->set_userdata['empresa_seleccionada']=
 	}
 
+	public function pagina($pagina="")
+	{
+		$this->session->set_userdata('pagina',$pagina);
+		redirect('contador');
+	}
 }//fin de clase
