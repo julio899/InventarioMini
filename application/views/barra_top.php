@@ -17,6 +17,22 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
+
+                <?php if($this->session->userdata['datos_usuario']['tipo']=='C' && $this->session->userdata('empresa_seleccionada')   ):?>
+                    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Cambiar de Empresa" aria-expanded="false"><i class="fa fa-codepen"></i> Cambiar de Empresa <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                               
+                                    <?php if(isset($empresas))
+                                            {
+                                                for ($i=0; $i <count($empresas) ; $i++) { 
+                                                    echo "<li><a href=\"".base_url()."contador/seleccionar_empresa/".$empresas[$i]['codigo']."\">[ COD: ". $empresas[$i]['codigo'] ." ] <br>". strtoupper($empresas[$i]['razon']) ."</a></li>";
+                                                }
+                                            } ?>
+                                
+                            </ul>
+                    </li>
+                <?php endif; ?>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $session['nombre_completo']?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">

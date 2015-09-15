@@ -47,28 +47,30 @@ class Principal extends CI_Controller {
 	public function cerrar_session(){
 		$this->session->unset_userdata('datos_usuario');
 		$this->session->unset_userdata('empresa_seleccionada');
+		$this->session->sess_destroy();
 		$this->redireccionar();
 	}
 	public function redireccionar(){
 		$session=$this->session->userdata('datos_usuario');
 		$es_valido=$this->session->userdata('validado');
 
-		if( $session['validado']==TRUE && $this->session->userdata['datos_usuario']['tipo']=='A' ){
-					redirect('administrador');
-		}
+				if( $session['validado']==TRUE && $this->session->userdata['datos_usuario']['tipo']=='A' ){
+							redirect('administrador');
+				}
 
-		if( $session['validado']==TRUE && $this->session->userdata['datos_usuario']['tipo']=='C' ){
-					redirect('contador');
-		}
+				if( $session['validado']==TRUE && $this->session->userdata['datos_usuario']['tipo']=='C' ){
+							redirect('contador');
+				}
 
-		if($session == NULL && $es_valido == TRUE){
-					$this->session->set_flashdata('info', 'Identifiquese par poder acceder');
-					redirect();			
-		}
-		if(  $es_valido != TRUE){
-					$this->session->set_flashdata('error', 'Usuario o Clave Invalidos');
-					redirect();
-		}
+				if($session == NULL && $es_valido == TRUE){
+							$this->session->set_flashdata('info', 'Identifiquese par poder acceder');
+							redirect();			
+				}
+				
+				if(  $es_valido != TRUE){
+							$this->session->set_flashdata('error', 'Usuario o Clave Invalidos');
+							redirect();
+				}
 
 	}//fin de redireccionar
 }//Fin de Clase

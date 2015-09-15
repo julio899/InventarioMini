@@ -25,8 +25,8 @@
 
 	<!-- En caso que sea un usuario de tipo contador cargo los modales necesarios -->
 	<?php if( $this->session->userdata['datos_usuario']['tipo']=='C'):  ?>
-	<script src="<?php echo base_url();?>js/metisMenu.min.js"></script>
-	<script src="<?php echo base_url();?>js/sb-admin-2.js"></script>
+
+
 	<?php $this->load->view('modal/crear_empresa');?>
 	<?php endif;?>
 

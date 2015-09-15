@@ -1,4 +1,10 @@
-<?php $session=$this->session->userdata('datos_usuario');?>
+<?php   # en caso que no haya session activa no se realizara nada
+        if( $this->session->userdata('datos_usuario')  )
+        {
+            $session=$this->session->userdata('datos_usuario');
+        }else{ exit(); }
+
+?>
     <div id="wrapper">
 
         <!-- Navigation -->

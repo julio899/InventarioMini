@@ -50,61 +50,19 @@
                     </li>
                     <?php if($this->session->userdata('empresa_seleccionada')): ?>
                     <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Cargar Facturas<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
-                                <li>
-                                    <a href="#">Gastos</a>
-                                </li>
-                                <li>
-                                    <a href="#">Ventas</a>
-                                </li>
-                                <li>
-                                    <a href="#">Compras <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level collapse">
-                                        <li>
-                                            <a href="#">Mercancia General</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Mercancia Detallada</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-
-                        </li>
-                        <li class="">
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level collapse">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> CARGAR FACTURAS <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#modal_nuevo_proveedor"><span class="fa fa-truck" aria-hidden="true"></span> FACT. COMPRAS</a>
+                            </li>
+                            <li>
+                                <a href="http://localhost/InventarioMini//administrador/cargar_factura"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> FACT. VENTAS</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#modal_nueva_categoria"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> GASTOS</a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <?php endif; ?>
 

@@ -19,11 +19,20 @@ class Contador extends CI_Controller {
 
 	public function verifica_contador()
 	{
-		if($this->session->userdata['datos_usuario']['tipo']!='C'){
-			echo "<pre>Necesita acceder con una cuenta de tipo Contador para poder acceder a este modulo.</pre>";
-			echo "<a href=\"".base_url()."\">Click Aqui para regresar</a>";
-			exit();
-		}
+		if(!isset($this->session->userdata['datos_usuario']))
+			{
+					echo "ha expirado el tiempo de sesión ó cerrado la sesión...<br>";
+					echo "<a href=\"".base_url()."\">Click Aqui para regresar</a>";
+			}else{
+
+				if($this->session->userdata['datos_usuario']['tipo']!='C')
+				{
+					echo "<pre>Necesita acceder con una cuenta de tipo Contador para poder acceder a este modulo.</pre>";
+					echo "<a href=\"".base_url()."\">Click Aqui para regresar</a>";
+					exit();
+				}
+			}
+		
 	}
 
 	public function reg_nueva_empresa()
