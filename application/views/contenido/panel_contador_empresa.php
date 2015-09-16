@@ -2,7 +2,27 @@
 	<div class="row">
 		 <div class="col-lg-12">
 		 	<h1 class="page-header"><?php echo strtoupper($this->session->userdata('empresa_seleccionada')['razon']); ?> </h1>
-		 </div>
+
+                                    <?php
+                                    /*
+                                        *- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*
+                                        * Verifico si hay algun mensaje de error o notificacion que mostrar *
+                                        * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - *
+                                    */
+                                        if ($this->session->flashdata('ok')) {
+                                            echo "<div class=\"alert alert-success\" role=\"alert\">
+                                                  <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
+                                                  <span class=\"sr-only\">Error:</span>".$this->session->flashdata('ok')."
+                                                </div>";
+                                        }// # Fin de Alerta success ok
+
+                                        if ($this->session->flashdata('error')) {
+                                            echo "<div class=\"alert alert-danger\" role=\"alert\">
+                                                  <span class=\"glyphicon glyphicon-exclamation-sign\" aria-hidden=\"true\"></span>
+                                                  <span class=\"sr-only\">Error:</span>".$this->session->flashdata('error')."
+                                                </div>";
+                                        }// # Fin de Alerta Error
+                                    ?>         </div>
 	</div>
 
     <?php   #cargamos la pagina correspondiente

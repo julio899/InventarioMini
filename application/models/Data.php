@@ -90,6 +90,13 @@ public function __construct() {
 		return $query->row(); 
 	}//fin de existe_categoria
 
+
+	function existe_cod_cuenta($cod){
+		$query = $this->db->where('codigo',$cod);
+		$query = $this->db->get('cuentas');
+		return $query->row(); 
+	}//fin de existe_cod_cuenta
+
 	function existe_categoria($cat=""){
 		$query = $this->db->where('nombre_categoria',$cat);
 		$query = $this->db->get('categorias');
@@ -129,6 +136,10 @@ public function __construct() {
 
 	function reg_empresa($datos){
 		return $this->db->insert('empresas', $datos);
+	}//fin de reg_empresa
+
+	function reg_cuenta($datos){
+		return $this->db->insert('cuentas', $datos);
 	}//fin de reg_empresa
 
 	function existe_empresa($datos)

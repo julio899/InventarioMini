@@ -77,6 +77,44 @@ class Contador extends CI_Controller {
     			}
 	}
 
+	public function reg_nueva_cuenta()
+	{
+
+			$this->load->library('form_validation');
+
+			$this->form_validation->set_rules('nombreCuenta', 'Nombre de la Cuenta', 'trim|required');
+			$this->form_validation->set_rules('naturaleza', 'Naturaleza', 'trim|required');
+			$this->form_validation->set_rules('codigo', 'CODIGO', 'trim|required');
+			$this->form_validation->set_rules('usuario', 'USUARIO', 'trim|required');
+
+			if ($this->form_validation->run() == FALSE)
+    			{
+
+					$this->session->set_flashdata('error',"Error en Validacion de datos. ".validation_errors('<div class="error">', '</div>'));
+    				redirect('contador');
+    			}else{
+    				$datos=array(
+    								'nombre'=>$this->input->post('nombreCuenta'),
+    								'naturaleza'=>$this->input->post('naturaleza'),
+    								'codigo'=>$this->input->post('codigo'),
+    								'usuario'=>$this->input->post('usuario')
+    							);
+    				$this->load->model('data');
+    					if($this->data->existe_cod_cuenta($datos['codigo'])==NULL){
+    					# "No Existe" ahora Insertamos los datos
+    						if($this->data->reg_cuenta($datos)){
+    							$this->session->set_flashdata('ok',"CATEGORIA procesada satisfactoriamente");
+				    		}else{
+    							$this->session->set_flashdata('error',"ha ocurrido un Error en insercion SQL");
+				    		}
+    					}else{
+    						$this->session->set_flashdata('error',"el codigo que intenta registrar para esa cuenta Ya Existe.");
+				    	}
+    			}
+    			redirect('contador');
+
+	}//fin de funcion reg_nueva_cuenta
+
 	public function seleccionar_empresa($codigo="")
 	{	
 		$this->session->set_userdata('pagina','home');
