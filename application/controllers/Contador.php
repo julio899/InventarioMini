@@ -54,7 +54,8 @@ class Contador extends CI_Controller {
 					   'codigo' => $this->input->post('codigo') ,
 					   'razon' => $this->input->post('razon') ,
 					   'rif' => $this->input->post('rif'),
-					   'direccion'=>$this->input->post('direccion')
+					   'direccion'=>$this->input->post('direccion'),
+					   'usuario'=>$this->session->userdata('datos_usuario')['usuario']
 					);
 
 					$this->load->model('data');

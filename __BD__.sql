@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-09-2015 a las 16:42:01
+-- Tiempo de generación: 16-09-2015 a las 14:53:17
 -- Versión del servidor: 5.5.44-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.11
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `categorias`
 --
 
+DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE IF NOT EXISTS `categorias` (
 `id` int(11) NOT NULL,
   `nombre_categoria` varchar(50) COLLATE utf8_spanish_ci NOT NULL
@@ -57,14 +58,18 @@ INSERT INTO `categorias` (`id`, `nombre_categoria`) VALUES
 -- Estructura de tabla para la tabla `compras`
 --
 
+DROP TABLE IF EXISTS `compras`;
 CREATE TABLE IF NOT EXISTS `compras` (
 `id` int(10) NOT NULL,
   `idProveedor` int(10) NOT NULL,
+  `idU` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
   `monto` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `tipo` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
   `productos` varchar(10000) COLLATE utf8_spanish_ci NOT NULL,
-  `nro_fac` varchar(15) COLLATE utf8_spanish_ci NOT NULL
+  `nro_fac` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_cuenta` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `status` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'A'
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -76,8 +81,36 @@ TRUNCATE TABLE `compras`;
 -- Volcado de datos para la tabla `compras`
 --
 
-INSERT INTO `compras` (`id`, `idProveedor`, `fecha`, `monto`, `tipo`, `productos`, `nro_fac`) VALUES
-(3, 2, '2015-06-25 02:06:20', '2000', 'G', '{"motivo":"Gastos"}', '');
+INSERT INTO `compras` (`id`, `idProveedor`, `idU`, `fecha`, `monto`, `tipo`, `productos`, `nro_fac`, `tipo_cuenta`, `status`) VALUES
+(3, 2, 0, '2015-06-25 02:06:20', '2000', 'G', '{"motivo":"Gastos"}', '', '', 'A');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cuentas`
+--
+
+DROP TABLE IF EXISTS `cuentas`;
+CREATE TABLE IF NOT EXISTS `cuentas` (
+`id` int(11) NOT NULL,
+  `codigo` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `naturaleza` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `status` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'A',
+  `usuario` varchar(25) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Truncar tablas antes de insertar `cuentas`
+--
+
+TRUNCATE TABLE `cuentas`;
+--
+-- Volcado de datos para la tabla `cuentas`
+--
+
+INSERT INTO `cuentas` (`id`, `codigo`, `nombre`, `naturaleza`, `status`, `usuario`) VALUES
+(5, '10010', 'Gastos Administrativos', 'D', 'A', 'mari');
 
 -- --------------------------------------------------------
 
@@ -85,13 +118,15 @@ INSERT INTO `compras` (`id`, `idProveedor`, `fecha`, `monto`, `tipo`, `productos
 -- Estructura de tabla para la tabla `empresas`
 --
 
+DROP TABLE IF EXISTS `empresas`;
 CREATE TABLE IF NOT EXISTS `empresas` (
 `id` int(10) NOT NULL,
   `codigo` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `razon` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `rif` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `direccion` varchar(500) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `direccion` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
+  `usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Truncar tablas antes de insertar `empresas`
@@ -102,9 +137,8 @@ TRUNCATE TABLE `empresas`;
 -- Volcado de datos para la tabla `empresas`
 --
 
-INSERT INTO `empresas` (`id`, `codigo`, `razon`, `rif`, `direccion`) VALUES
-(4, '001', 'K-TUX, C.A.', 'J-40190154-9', 'Calle 13 de septiembre casa 6, el valle sector santa rita, Maracay estado aragua.'),
-(5, '002', 'company', 'j', 'a');
+INSERT INTO `empresas` (`id`, `codigo`, `razon`, `rif`, `direccion`, `usuario`) VALUES
+(7, '001', 'Company, C.A.', 'J-40190154-8', 'Maracay estado Aragua', 'mari');
 
 -- --------------------------------------------------------
 
@@ -112,6 +146,7 @@ INSERT INTO `empresas` (`id`, `codigo`, `razon`, `rif`, `direccion`) VALUES
 -- Estructura de tabla para la tabla `productos`
 --
 
+DROP TABLE IF EXISTS `productos`;
 CREATE TABLE IF NOT EXISTS `productos` (
 `id` int(5) NOT NULL,
   `codigo` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
@@ -150,6 +185,7 @@ INSERT INTO `productos` (`id`, `codigo`, `descripcion`, `categoria`, `compra`, `
 -- Estructura de tabla para la tabla `proveedores`
 --
 
+DROP TABLE IF EXISTS `proveedores`;
 CREATE TABLE IF NOT EXISTS `proveedores` (
 `id` int(10) NOT NULL,
   `razon` varchar(70) COLLATE utf8_spanish_ci NOT NULL,
@@ -179,13 +215,14 @@ INSERT INTO `proveedores` (`id`, `razon`, `rif`, `direccion`, `telefono`, `statu
 -- Estructura de tabla para la tabla `usuarios`
 --
 
+DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
 `id` int(7) NOT NULL,
   `usuario` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `clave` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `nombre_completo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `tipo` varchar(1) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Truncar tablas antes de insertar `usuarios`
@@ -198,7 +235,7 @@ TRUNCATE TABLE `usuarios`;
 
 INSERT INTO `usuarios` (`id`, `usuario`, `clave`, `nombre_completo`, `tipo`) VALUES
 (1, 'julio899', '51c30cf5b566235f70673a8092853fa4b0bb60e4', 'Julio Vinachi', 'A'),
-(2, 'mari', '51c30cf5b566235f70673a8092853fa4b0bb60e4', 'Maricarmen Ochoa', 'C');
+(3, 'mari', '51c30cf5b566235f70673a8092853fa4b0bb60e4', 'Maricarmen Ochoa', 'C');
 
 --
 -- Índices para tablas volcadas
@@ -214,13 +251,19 @@ ALTER TABLE `categorias`
 -- Indices de la tabla `compras`
 --
 ALTER TABLE `compras`
- ADD PRIMARY KEY (`id`), ADD KEY `idProveedor` (`idProveedor`);
+ ADD PRIMARY KEY (`id`), ADD KEY `idProveedor` (`idProveedor`), ADD KEY `idU` (`idU`), ADD KEY `tipo_cuenta` (`tipo_cuenta`);
+
+--
+-- Indices de la tabla `cuentas`
+--
+ALTER TABLE `cuentas`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `nombre` (`nombre`), ADD UNIQUE KEY `codigo` (`codigo`), ADD KEY `usuario` (`usuario`), ADD KEY `usuario_2` (`usuario`);
 
 --
 -- Indices de la tabla `empresas`
 --
 ALTER TABLE `empresas`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `codigo` (`codigo`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `codigo` (`codigo`), ADD KEY `usuario` (`usuario`);
 
 --
 -- Indices de la tabla `productos`
@@ -255,10 +298,15 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 ALTER TABLE `compras`
 MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT de la tabla `cuentas`
+--
+ALTER TABLE `cuentas`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT de la tabla `empresas`
 --
 ALTER TABLE `empresas`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
@@ -273,7 +321,7 @@ MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
@@ -283,6 +331,18 @@ MODIFY `id` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 ALTER TABLE `compras`
 ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`idProveedor`) REFERENCES `proveedores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `cuentas`
+--
+ALTER TABLE `cuentas`
+ADD CONSTRAINT `enlace_a_usuarios` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `empresas`
+--
+ALTER TABLE `empresas`
+ADD CONSTRAINT `empresas_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
