@@ -104,7 +104,7 @@ class Contador extends CI_Controller {
     					if($this->data->existe_cod_cuenta($datos['codigo'])==NULL){
     					# "No Existe" ahora Insertamos los datos
     						if($this->data->reg_cuenta($datos)){
-    							$this->session->set_flashdata('ok',"CATEGORIA procesada satisfactoriamente");
+    							$this->session->set_flashdata('ok',"Ha sido registrada una nueva CUENTA satisfactoriamente");
 				    		}else{
     							$this->session->set_flashdata('error',"ha ocurrido un Error en insercion SQL");
 				    		}
