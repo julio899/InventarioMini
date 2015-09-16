@@ -28,6 +28,7 @@
 
 
 	<?php $this->load->view('modal/crear_empresa');?>
+	<?php $this->load->view('modal/crear_nueva_cuenta');?>
 	<?php endif;?>
 
 <script>

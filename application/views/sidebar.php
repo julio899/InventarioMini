@@ -45,8 +45,11 @@
             <?php if($this->session->userdata['datos_usuario']['tipo']=='C'):?>
                 <!-- opciones en caso de ser Contador -->
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <a href="<?php echo base_url().index_page();?>contador"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
+                    </li>
+                    <li>
+                        <a href="javascritp:;" data-toggle="modal" data-target="#modal_nueva_cuenta">Crear una Cuenta</a>
                     </li>
                     <?php if($this->session->userdata('empresa_seleccionada')): ?>
                     <li>
