@@ -36,7 +36,14 @@
                                         	<span class="input-group-addon">Bs.</span>
                                             <input class="form-control" placeholder="ejemplo: 3420.50">
                                             <span class="input-group-addon">MONTO</span>
-                                        </div><br><hr><br>
+                                        </div><hr>
+
+                                        <div class="form-group">
+                                            <label>Tipo de cuenta a la que se le asignara esta factura</label>
+                                            <select name="tipo_cuenta" id="tipo_cuenta">
+                                            	<option value="">Seleccione un Tipo de Cuenta --></option>
+                                            </select>
+                                        </div>
 
                                         <div class="form-group">
                                             <label>Nro. de Factura</label>

@@ -137,4 +137,5 @@ class Contador extends CI_Controller {
 		$this->session->set_userdata('pagina',$pagina);
 		redirect('contador');
 	}
+	
 }//fin de clase
