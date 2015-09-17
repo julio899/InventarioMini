@@ -137,5 +137,21 @@ class Contador extends CI_Controller {
 		$this->session->set_userdata('pagina',$pagina);
 		redirect('contador');
 	}
-	
+
+	public function prueba()
+	{	# Prueba de una plantilla
+		$this->parser->parse('prueba', array(
+												'nombre'=>'Julio Vinachi',
+												'mensaje'=>"Bienvenido a la libreria parser",
+												'titulo'=>'prueba de plantilla',
+												'datos'=> array(
+													                array('obj' => 'camisa', 'body' => 'Body 1'),
+													                array('obj' => 'raqueta', 'body' => 'Body 2'),
+													                array('obj' => 'balon', 'body' => 'Body 3'),
+													                array('obj' => 'cesta', 'body' => 'Body 4'),
+													                array('obj' => 'gorra', 'body' => 'Body 5')
+                												)
+											)
+							);
+	}
 }//fin de clase
