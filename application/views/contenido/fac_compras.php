@@ -31,15 +31,6 @@
 
 	</div>
 	<div class="col-lg-3">
-                            <div class="panel-body">
-                                <div class="list-group">
-		                            <a href="#" class="list-group-item active"><i class="fa fa-hand-o-right">  </i> Compras del Mes Actual</a>
-                                    <a href="#" class="list-group-item"><i class="fa fa-file-text">  </i> Cargar Factura de Compra</a>
-                                    <a href="javascript:;" data-toggle="modal" data-target="#modal_consultar_mes" class="list-group-item"><i class="fa fa-question-circle">  </i> Consultar Mes Especifico</a>
-		                            <a href="#" class="list-group-item"><i class="fa fa-plus-circle">  </i> Crear Nuevo Proveedor</a>
-		                            <a href="#" class="list-group-item"><i class="fa fa-search">  </i> Consultar Proveedor Especifico</a>
-		                            <a href="#" class="list-group-item"><i class="fa fa-copy">  </i> Generar Reporte</a>
-		                        </div>
-                            </div>
+        <?php $this->load->view('menu_opciones/opciones_fac_compras'); ?>
 	</div>
 </div>
