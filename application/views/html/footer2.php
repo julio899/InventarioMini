@@ -34,7 +34,19 @@
 
 	/*Activamos los eventos de los titulos o herramienta de tip (tooltip)*/
 	$(function () {
-		$("#fecha_fact" ).datepicker();  
+
+/*Activando los campos date con el datepicker*/
+$.datepicker.setDefaults($.datepicker.regional["es"]);
+
+$("#datepicker").datepicker({
+showWeek: true,
+firstDay: 1,
+dateFormat: 'yy-mm-dd'
+});
+
+
+		$("#fecha_fact" ).datepicker();   
+		$("#fecha_factura").datepicker();
 		$('[data-toggle="tooltip"]').tooltip() 
     	$('#tabla').DataTable({
 
