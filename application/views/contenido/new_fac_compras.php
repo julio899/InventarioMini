@@ -10,7 +10,7 @@
                                 <div class="col-lg-12">
                                     <form role="form">
                                     	<div class="form-group input-group">
-                                            <input type="text" class="form-control" placeholder="para buscar un proveedor cargado use este campo">
+                                            <input type="text" class="form-control" id="buscador_proveedor" placeholder="para buscar un proveedor cargado use este campo">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-info" type="button"><i class="fa fa-search"></i>
                                                 </button>
@@ -75,7 +75,8 @@
                         </div>
                         <!-- /.panel-body -->
                     </div>
-
+        <!--Cargamos el Js de Autocompletado -->
+        <?php $this->load->view('js/buscador_proveedor'); ?>
 	</div>
 	<div class="col-lg-3">
         <?php $this->load->view('menu_opciones/opciones_fac_compras'); ?>

@@ -155,6 +155,12 @@ public function __construct() {
 		$query = $this->db->get('cuentas');
 		return $query->result_array();
 	}
+	
+	function get_proveedor_nombre($nombre){
+		$this->db->like('razon',$nombre);
+		$query = $this->db->get('proveedores');
+		return $query->result_array();
+	}
 }
 
 ?>

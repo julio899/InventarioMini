@@ -161,4 +161,16 @@ class Contador extends CI_Controller {
 											)
 							);
 	}
+
+	public function get_proveedor($nombre=""){
+
+		$this->load->model('data');
+		$respuesta=$this->data->get_proveedor_nombre($nombre);
+		/*$datos=null;
+		foreach ($respuesta as $key => $value) {
+				$datos[]=array('id'=>$value['id'],'razon'=>$value['razon'],'rif'=>$value['rif']);
+		}*/
+		echo json_encode($respuesta);
+	}// fin de get_proveedor
+
 }//fin de clase

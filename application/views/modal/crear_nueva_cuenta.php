@@ -10,9 +10,9 @@
 			        <form action="<?php echo base_url().index_page();?>contador/reg_nueva_cuenta" method="post">
 					      <div class="modal-body">
 					        <p>Nomre de la cuenta a crear</p>
-					        <input type="text" class="form-control" name="nombreCuenta" id="nombreCuenta" required>
-					        <br><pre>Cree un codigo UNICO para esta cuenta</pre>
-					        <input type="text" class="form-control" name="codigo" required>
+					        <input type="text" class="form-control" name="nombreCuenta" id="nombreCuenta" placeholder="Descripción" required>
+					        <br><pre>Cree un codigo UNICO para esta cuenta <i class="fa fa-qrcode"></i> <i class="fa fa-barcode"></i>  <i class="glyphicon glyphicon-barcode"></i>  <i class="glyphicon glyphicon-qrcode"></i> </pre>
+					        <input type="text" class="form-control" name="codigo" placeholder="Ejemplo: 1010" required>
 					        <br><p>Naturaleza Contable de la cuenta, debita (-) por el</p>
 					        				<select name="naturaleza" class="form-control" required>
                                                 <option value="">Seleccione</option>
