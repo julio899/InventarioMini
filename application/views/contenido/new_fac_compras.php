@@ -40,9 +40,15 @@
 
                                         <div class="form-group">
                                             <label>Tipo de cuenta a la que se le asignara esta factura</label>
-                                            <select name="tipo_cuenta" id="tipo_cuenta">
+                                            <select name="tipo_cuenta" id="tipo_cuenta" class="form-control">
                                             	<option value="">Seleccione un Tipo de Cuenta --></option>
+                                                 <?php   if (isset($cuentas)): 
+                                                        for ($i=0; $i < count($cuentas); $i++) { 
+                                                            echo '<option value="'.$cuentas[$i]['codigo'].'">[ '.$cuentas[$i]['codigo']." ] ". strtoupper($cuentas[$i]['nombre'] ).'</option>';
+                                                        }
+                                                    endif; ?>
                                             </select>
+
                                         </div>
 
                                         <div class="form-group">

@@ -145,9 +145,16 @@ public function __construct() {
 	function existe_empresa($datos)
 	{
 		$this->db->where('codigo',$datos['codigo']);
+		$this->db->where('status','A');
 		$query = $this->db->get('empresas');
 		return $query->row(); 
 	}//fin de existe_empresa
+
+	function get_tipos_cuentas($usuario){
+		$this->db->where('usuario',$usuario);
+		$query = $this->db->get('cuentas');
+		return $query->result_array();
+	}
 }
 
 ?>

@@ -10,7 +10,7 @@ class Contador extends CI_Controller {
 		public function index()
 	{	
 		$this->load->model('data');
-		$datos=array('empresas'=>$this->data->get_empresas() );
+		$datos=array('empresas'=>$this->data->get_empresas() , 'cuentas'=>$this->cuentas() );
 		$this->load->view('html/head2');
 		$this->load->view('contenido/panel_contador',$datos);
 		$this->load->view('html/footer2');
@@ -136,6 +136,13 @@ class Contador extends CI_Controller {
 	{
 		$this->session->set_userdata('pagina',$pagina);
 		redirect('contador');
+	}
+	
+	public function cuentas()
+	{
+		$this->load->model('data');
+		return $this->data->get_tipos_cuentas( $this->session->userdata('datos_usuario')['usuario'] );
+
 	}
 
 	public function prueba()
