@@ -145,11 +145,11 @@ class Contador extends CI_Controller {
 												'mensaje'=>"Bienvenido a la libreria parser",
 												'titulo'=>'prueba de plantilla',
 												'datos'=> array(
-													                array('obj' => 'camisa', 'body' => 'Body 1'),
-													                array('obj' => 'raqueta', 'body' => 'Body 2'),
-													                array('obj' => 'balon', 'body' => 'Body 3'),
-													                array('obj' => 'cesta', 'body' => 'Body 4'),
-													                array('obj' => 'gorra', 'body' => 'Body 5')
+													                array('obj' => array('name'=>'equis','ape'=>'vinachi'), 'body' => 'Body 1'),
+													                array('obj' => array('name'=>'raqueta','ape'=>'ochoa'), 'body' => 'Body 2'),
+													                array('obj' => array('name'=>'balon','ape'=>'carapa'), 'body' => 'Body 3'),
+													                array('obj' => array('name'=>'cesta','ape'=>'velazquez'), 'body' => 'Body 4'),
+													                array('obj' => array('name'=>'gorra','ape'=>'abc'), 'body' => 'Body 5')
                 												)
 											)
 							);

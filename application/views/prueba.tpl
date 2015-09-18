@@ -10,8 +10,9 @@
 		</code>
 		<pre>mensaje: {mensaje} 
 				<br>Datos: 
+				
 				<!-- BEGIN {datos} -->
-					{datos->body}	
+					{obj->name}		{body}	
 				<!-- END {datos} -->
 
 		</pre>

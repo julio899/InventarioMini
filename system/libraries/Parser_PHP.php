@@ -5,7 +5,6 @@
  *
  * Parsing templates
  *
- * @framework	CodeIgniter
  * @subpackage	Libraries
  * @author		Tomáš Bončo
  * @category	Parser
@@ -18,9 +17,8 @@
  *		Character Art: http://bit.ly/MBTCVq
  */
  
-class CI_Parser
+class parser
 {
-	private $ci;	// CodeIgniter instance
 	private $data;
 	private $config;
 	public  $content; // Output
@@ -28,15 +26,7 @@ class CI_Parser
 	function __construct()
 	{
 		$this->classname = get_class($this);
-		
-		$this->CI =& get_instance();
-		
-		$this->CI->load->helper('file');	// read_file()
-		$this->CI->load->helper('string');  // reduce_double_slashes()
-		
 		$this->_default();
-		
-		log_message('debug', 'CTP Class initialized');
 	}
 	
 	/**
@@ -66,8 +56,6 @@ class CI_Parser
 		{
 			$this->_set_config($config);
 			
-			@$this->data->append['config'] = (array) $this->CI->config->config; // actual config
-			
 			if ($this->config->is_string == TRUE)	// ... is first parameter string (or file) ?
 			{
 				if ( strlen(trim($input)) > 0 )
@@ -94,9 +82,9 @@ class CI_Parser
 				$this->config->file = $this->_path(TRUE) . $this->config->theme . '/' .  $this->config->template_suffix . '/' . $input . '.' . $this->config->extension;
         		$this->config->folder = $this->_path() . $this->config->theme;
         		
-        		if ( ! $this->data->input = (string) read_file($this->config->file) )
+        		if ( ! $this->data->input = (string) $this->read_file($this->config->file) )
         		{
-        			show_error('Template not found: '. reduce_double_slashes( $this->config->file ));
+        			die('Template not found: '. $this->reduce_double_slashes( $this->config->file ));
         			return FALSE;
         		}
         		
@@ -178,8 +166,6 @@ class CI_Parser
         if (is_dir(APPPATH . 'views/' . $value))
         {
             $this->config->theme = $value;
-            
-            $this->CI->config->set_item('comper_parser', array('theme' => $value));
             
             return TRUE;
         }
@@ -292,7 +278,7 @@ class CI_Parser
 
     	else
     	{
-    		return (string) read_file( $filename );
+    		return (string) $this->read_file( $filename );
     	}
     }
 	
@@ -653,7 +639,7 @@ class CI_Parser
 	
 	function _find_nearest( $arr, $sp, $ep = FALSE )
 	{
-		return reset( $this->_find_between( $arr, $sp, $ep ) );
+		return  $this->_find_between( $arr, $sp, $ep )[0];
 	}
 	
 	/**
@@ -847,7 +833,7 @@ class CI_Parser
 					{
 						## There is something unexpecting. Notice developer and return FALSE.
 
-						log_message( 'error', 'Parser don\'t understand your condition. Please fix it or write to helpdesk. Condition after parsing: '. $code );
+						die( 'Parser don\'t understand your condition. Please fix it or write to helpdesk. Condition after parsing: '. $code );
 						return FALSE;
 					}
 				}
@@ -1136,7 +1122,7 @@ class CI_Parser
     private function _show()
     {
     	$this->content = $this->data->input;
-	 	if ($this->config->show) $this->CI->output->append_output($this->data->input);
+	 	if ($this->config->show) echo $this->data->input;
     }
 	
 	/**
@@ -1164,12 +1150,12 @@ class CI_Parser
 		$this->config->disable_cycles = FALSE;
 		$this->config->disable_includes = FALSE;
 		$this->config->disable_variables = FALSE;
-		$this->config->exceptions = array('memory_usage', 'elapsed_time');
+		$this->config->exceptions = array();
 		$this->config->extension = 'tpl';
 		$this->config->file = NULL;
 		$this->config->folder = NULL;
 		$this->config->is_string = FALSE;
-		$this->config->path = '%path%/views/';
+		$this->config->path = '.';
 		$this->config->show = TRUE;
 		$this->config->suffix_theme_only = TRUE;
 		$this->config->template_suffix = 'tpl';
@@ -1199,8 +1185,6 @@ class CI_Parser
 	 
 	private function _set_config($config)
 	{		
-		@$config = (array) $config + (array) $this->CI->config->item('comper_parser');
-		
 		foreach ($config as $cfg_key => $cfg_value)
 		{
 			if (is_array($cfg_value))
@@ -1232,23 +1216,50 @@ class CI_Parser
 	
 	private function _path($is_file = FALSE)
     {
-    	if ($is_file)
-    	{
-    		$apppath = APPPATH;
-    	}
-    	
-    	else
-    	{
-    		$apppath = (strpos(APPPATH, BASEPATH) !== FALSE) ?
-		        $this->CI->config->item('base_url') . end(explode('/', substr(BASEPATH, 0, -1))) . '/' . end(explode('/', substr(APPPATH, 0, -1))) :
-	        	$this->CI->config->item('base_url') . trim(APPPATH, '/');
-    	}
-        	
-        return str_replace(array('%path%', '%apppath%', '%basepath%'), array($apppath, APPPATH, BASEPATH), $this->config->path);	
+    	return  $this->config->path;
     }
+
+
+
+    /* FUNCTIONS FROM CI, Credits to CodeIgniter team (Ellislab) */
+
+    function read_file($file)
+	{
+		if ( ! file_exists($file))
+		{
+			return FALSE;
+		}
+
+		if (function_exists('file_get_contents'))
+		{
+			return file_get_contents($file);
+		}
+
+		if ( ! $fp = @fopen($file, FOPEN_READ))
+		{
+			return FALSE;
+		}
+
+		flock($fp, LOCK_SH);
+
+		$data = '';
+		if (filesize($file) > 0)
+		{
+			$data =& fread($fp, filesize($file));
+		}
+
+		flock($fp, LOCK_UN);
+		fclose($fp);
+
+		return $data;
+	}
+
+	function reduce_double_slashes($str)
+	{
+		return preg_replace("#(^|[^:])//+#", "\\1/", $str);
+	}
 }
 
 // END Parser Class
 
-/* End of file Parser.php */
-/* Location: ./application/libraries/Parser.php */
+/* End of file Parser_PHP.php */
