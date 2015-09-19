@@ -17,6 +17,10 @@
                                             </span>
                                         </div>
 
+                                        <div class="forn-group">
+                                            <label id="status-busqueda"></label>
+                                        </div>
+
                                         <div class="form-group">
                                             <label>Razón Social</label>
                                             <input class="form-control">
