@@ -9,12 +9,20 @@
 
                                 <div class="col-lg-12">
                                     <form role="form">
-                                    	<div class="form-group input-group">
-                                            <input type="text" class="form-control" id="buscador_proveedor" placeholder="para buscar un proveedor cargado use este campo">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-info" type="button"><i class="fa fa-search"></i>
-                                                </button>
-                                            </span>
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                
+                                                    <div class="form-group input-group">
+                                                        <input type="text" class="form-control" id="buscador_proveedor" placeholder="para buscar un proveedor cargado use este campo">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-info" type="button"><i class="fa fa-search"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div id="resultado" class="btn-group-vertical" role="group"></div>
+                                            </div>
                                         </div>
 
                                         <div class="forn-group">
@@ -23,16 +31,16 @@
 
                                         <div class="form-group">
                                             <label>Razón Social</label>
-                                            <input class="form-control">
+                                            <input class="form-control" name="razon" id="razon">
                                             <p class="help-block">Describa el nombre del provedor</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Rif.</label>
-                                            <input class="form-control" placeholder="ejemplo: J-12345678-9">
+                                            <input class="form-control" name="rif" id="rif" placeholder="ejemplo: J-12345678-9" type="text">
                                         </div>
                                         <div class="form-group">
                                             <label>Dirección</label>
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea class="form-control" rows="3" name="direccion" id="direccion"></textarea>
                                         </div>
 
                                         <hr>
@@ -71,7 +79,7 @@
                                         	<input id="datepicker" name="datepicker" type="date">	
                                         </div>
                                         <button type="submit" class="btn btn-primary">Cargar</button>
-                                        <button type="reset" class="btn btn-default">Limpiar</button>
+                                        <button type="reset" class="btn btn-default limpiar">Limpiar</button>
                                     </form>
                                 </div>
                             </div>
