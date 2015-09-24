@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-09-2015 a las 14:53:17
+-- Tiempo de generación: 24-09-2015 a las 16:04:56
 -- Versión del servidor: 5.5.44-0ubuntu0.14.04.1
--- Versión de PHP: 5.5.9-1ubuntu4.11
+-- Versión de PHP: 5.5.9-1ubuntu4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `cuentas` (
   `naturaleza` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `status` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'A',
   `usuario` varchar(25) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Truncar tablas antes de insertar `cuentas`
@@ -110,7 +110,10 @@ TRUNCATE TABLE `cuentas`;
 --
 
 INSERT INTO `cuentas` (`id`, `codigo`, `nombre`, `naturaleza`, `status`, `usuario`) VALUES
-(5, '10010', 'Gastos Administrativos', 'D', 'A', 'mari');
+(5, '10010', 'Gastos Administrativos', 'D', 'A', 'mari'),
+(6, '2020', 'Nomina', 'D', 'A', 'mari'),
+(7, '3030', 'Caja chica', 'H', 'A', 'mari'),
+(8, '123123', 'gastos de servicios', 'D', 'A', 'mari');
 
 -- --------------------------------------------------------
 
@@ -195,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
   `status` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'A',
   `codigo` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Truncar tablas antes de insertar `proveedores`
@@ -207,7 +210,8 @@ TRUNCATE TABLE `proveedores`;
 --
 
 INSERT INTO `proveedores` (`id`, `razon`, `rif`, `direccion`, `telefono`, `status`, `codigo`, `fecha`) VALUES
-(2, 'inversiones', 'J-40190154-9', 'direccion', '0243-2713131', 'A', '010001', '0000-00-00');
+(2, 'inversiones', 'J-40190154-9', 'dirección de muestra, calle la cuadradita', '0243-2713131', 'A', '010001', '0000-00-00'),
+(3, 'interiores y fachadas c.a.', 'J-12345678-9', 'Maracay Edo Aragua', '0243-2713140', 'A', '123132', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -301,7 +305,7 @@ MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT de la tabla `cuentas`
 --
 ALTER TABLE `cuentas`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `empresas`
 --
@@ -316,7 +320,7 @@ MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

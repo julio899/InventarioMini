@@ -40,7 +40,7 @@ $('#buscador_proveedor').on('keyup', function(){
 			$("#rif").attr('disabled','disabled');
 			$("#direccion").attr('disabled','disabled');
 			console.log("rif:"+rif+"\nid:"+id+"\nrazon:"+razon);	
-			$("#resultado").html("");
+			$("#resultado").html('<input type="hidden" name="idProveedor" value="'+id+'">');
 		});
 		
 
