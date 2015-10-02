@@ -65,7 +65,12 @@
 
                                         <div class="form-group">
                                             <label>Nro. de Factura</label>
-                                            <input class="form-control" placeholder="ejemplo: 0012514">
+                                            <input name="nro_factura" class="form-control" placeholder="ejemplo: 0012514">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Nro. de Control</label>
+                                            <input name="nro_control" class="form-control" placeholder="ejemplo: 00-2031">
                                         </div>
 
                                         <div class="form-group">
@@ -75,9 +80,49 @@
 
 
                                         <div class="form-group">
-                                        	<label for="datepicker">Fecha de la Factura</label>
-                                        	<input id="datepicker" name="datepicker" type="date">	
+                                            <label for="datepicker">Fecha de la Factura</label>
+                                            <input id="datepicker" name="fecha_fact" type="date">   
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="mes_afectado">Mes en que afecta la cuenta</label>
+                                            <input id="mes_afectado" class="date-mes" name="mes_fact">   
+                                        </div>
+                                        <!--js para date del mes -->
+                                        <script>
+                                            $(function() {
+                                            $('.date-mes').datepicker( {
+                                                changeMonth: true,
+                                                changeYear: true,
+                                                showButtonPanel: false,
+                                                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                                                monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                                                dateFormat: 'mm-yy',
+                                                onClose: function(dateText, inst) { 
+                                                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                                                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                                                    $(this).datepicker('setDate', new Date(year, month, 1));
+                                                    
+                                                }
+
+                                            });
+                                        
+                                        });
+                                            // # Ocultando los dias y cambiando colore a los textos de los select 
+                                            $( "#mes_afectado" ).focus(function() {
+                                                    $('table.ui-datepicker-calendar').css('display','none');
+                                                    $('select.ui-datepicker-month').css('color','black');
+                                                    $('select.ui-datepicker-year').css('color','black');
+                                            });
+                                                                                   
+                                             </script>
+                                        <style>
+                                         .ui-datepicker-calendar {
+                                         /*   display: none;*/
+                                        }
+
+                                        </style>
+
                                         <button type="submit" class="btn btn-primary">Cargar</button>
                                         <button type="reset" class="btn btn-default limpiar">Limpiar</button>
                                     </form>

@@ -8,7 +8,7 @@
                 }
             ?>
     <div class="login-form padding20 block-shadow">
-        <form action="<?php echo base_url().index_page().'/Principal/validar_ingreso';?>" method="post">
+        <form action="<?php echo base_url().'Principal/validar_ingreso';?>" method="post">
             <h1 class="text-light">IDENTIFICA&Oacute;N</h1>
 
             <hr class="thin"/>

@@ -2,6 +2,7 @@
 $("button.limpiar").click(function(){
 	$("input").removeAttr( "disabled" );
 	$("textarea").removeAttr( "disabled" );
+	$("#resultado").html("");
 });
 
 
@@ -28,7 +29,6 @@ $('#buscador_proveedor').on('keyup', function(){
 		 
 		 $( "button.proveedor" ).click(function() {
 		  $(this).toggleClass( "seleccionado" );
-
 			var rif=$(this).attr('rif'); 
 			var id=$(this).attr('id');
 			var razon=$(this).attr('razon');

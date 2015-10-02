@@ -44,7 +44,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="<?php echo base_url().index_page();?>/principal/cerrar_session" class="btn-danger"><i class="fa fa-fw fa-power-off"></i> Desconectarse</a>
+                            <a href="<?php echo base_url()?>principal/cerrar_session" class="btn-danger"><i class="fa fa-fw fa-power-off"></i> Desconectarse</a>
                         </li>
                     </ul>
                 </li>

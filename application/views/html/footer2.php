@@ -27,16 +27,18 @@
 	/*Activamos los eventos de los titulos o herramienta de tip (tooltip)*/
 	$(function () {
 
-/*Activando los campos date con el datepicker*/
-$.datepicker.setDefaults($.datepicker.regional["es"]);
+	/*configuramos a español el datepicker*/
+	$.datepicker.setDefaults($.datepicker.regional["es"]);
 
-$("#datepicker").datepicker({
-showWeek: true,
-firstDay: 1,
-dateFormat: 'yy-mm-dd'
-});
-
-
+	$("#datepicker").datepicker({
+		showWeek: true,
+		firstDay: 1,
+		dateFormat: 'yy-mm-dd',
+		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+		monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic']
+	});
+	
+	/*Activando los campos date con el datepicker*/
 		$("#fecha_fact" ).datepicker();   
 		$("#fecha_factura").datepicker();
 		$('[data-toggle="tooltip"]').tooltip() 
@@ -55,7 +57,7 @@ dateFormat: 'yy-mm-dd'
         				},
 
 
-    		"ajax": "<?php echo base_url().index_page();?>/administrador/productos",
+    		"ajax": "<?php echo base_url();?>administrador/productos",
     		"columnDefs": [ {
             "targets": -1,
             "data": null,
