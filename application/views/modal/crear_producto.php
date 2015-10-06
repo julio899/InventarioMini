@@ -8,7 +8,7 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">Creaci&oacute;n de un NUEVO Producto</h4>
 			      </div>
-			        <form action="<?php echo base_url().index_page();?>/administrador/reg_nuevo_producto" method="post" class="form-horizontal">
+			        <form action="<?php echo base_url();?>administrador/reg_nuevo_producto" method="post" class="form-horizontal">
 					      <div class="modal-body">
 					      
 								    <!-- Texto del nombre del producto-->

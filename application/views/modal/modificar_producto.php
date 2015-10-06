@@ -8,7 +8,7 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">Modifica&oacute;n del Producto</h4>
 			      </div>
-			        <form id="form_actualizar_producto" action="<?php echo base_url().index_page();?>/administrador/actualizar_producto" method="post" class="form-horizontal">
+			        <form id="form_actualizar_producto" action="<?php echo base_url();?>administrador/actualizar_producto" method="post" class="form-horizontal">
 					      <div class="modal-body">
 					      
 								    <!-- Texto del nombre del producto-->

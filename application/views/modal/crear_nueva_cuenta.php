@@ -7,7 +7,7 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">Creaci&oacute;n de un tipo de Cuenta</h4>
 			      </div>
-			        <form action="<?php echo base_url().index_page();?>contador/reg_nueva_cuenta" method="post">
+			        <form action="<?php echo base_url();?>contador/reg_nueva_cuenta" method="post">
 					      <div class="modal-body">
 					        <p>Nomre de la cuenta a crear</p>
 					        <input type="text" class="form-control" name="nombreCuenta" id="nombreCuenta" placeholder="Descripción" required>

@@ -6,7 +6,7 @@
                 <!-- opciones en caso de ser Administrador -->
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="<?php echo base_url().index_page();?>administrador"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
+                        <a href="<?php echo base_url();?>administrador"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
                     </li>
 
 
@@ -25,7 +25,7 @@
                                 <a href="#" data-toggle="modal" data-target="#modal_nuevo_proveedor"><span class="fa fa-truck" aria-hidden="true"></span> Crear Proveedor</a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url().index_page();?>/administrador/cargar_factura"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> Cargar Facturas de Compras</a>
+                                <a href="<?php echo base_url();?>administrador/cargar_factura"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> Cargar Facturas de Compras</a>
                             </li>
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#modal_nueva_categoria"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Crear Categoria</a>
@@ -36,7 +36,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="<?php echo index_page();?>"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                        <a href="<?php echo base_url();?>"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                     </li>
                 </ul>
                 <!-- Fin de Opciones del Administrador-->
@@ -46,7 +46,7 @@
                 <!-- opciones en caso de ser Contador -->
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="<?php echo base_url().index_page();?>contador"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
+                        <a href="<?php echo base_url();?>contador"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
                     </li>
                     
                     <?php if($this->session->userdata('empresa_seleccionada')): ?>
@@ -58,10 +58,10 @@
                         <ul id="demo" class="collapse">
                         <!-- Para referenciar a un modal data-toggle="modal" data-target="#id_del_modal" -->
                             <li>
-                                <a href="<?php echo base_url().index_page();?>contador/pagina/fac_compras" ><span class="fa fa-truck" aria-hidden="true"></span> FACT. COMPRAS</a>
+                                <a href="<?php echo base_url();?>contador/pagina/fac_compras" ><span class="fa fa-truck" aria-hidden="true"></span> FACT. COMPRAS</a>
                             </li>
                             <li>
-                                <a href="http://localhost/InventarioMini/administrador/cargar_factura"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> FACT. VENTAS</a>
+                                <a href="<?php echo base_url();?>administrador/cargar_factura"><span class="glyphicon glyphicon-save-file" aria-hidden="true"></span> FACT. VENTAS</a>
                             </li>
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#modal_nueva_categoria"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> GASTOS</a>

@@ -7,7 +7,7 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">CONSULTAR MES ESPECIFICO</h4>
 			      </div>
-			        <form action="<?php echo base_url().index_page();?>contador" method="post">
+			        <form action="<?php echo base_url();?>contador" method="post">
 					      <div class="modal-body">					      
 							<div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>

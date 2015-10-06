@@ -7,7 +7,7 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">Creaci&oacute;n de una categoria</h4>
 			      </div>
-			        <form action="<?php echo base_url().index_page();?>/administrador/reg_nueva_categoria" method="post">
+			        <form action="<?php echo base_url();?>administrador/reg_nueva_categoria" method="post">
 					      <div class="modal-body">
 					        <p>Nomre de la categoria a crear</p>
 					        <input type="text" class="form-control" name="txtCategoria" id="txtCategoria">

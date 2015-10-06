@@ -8,7 +8,7 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">Registro de Nuevo Proveedor</h4>
 			      </div>
-			        <form id="form_nuevo_proveedor" action="<?php echo base_url().index_page();?>/administrador/reg_nuevo_proveedor" method="post" class="form-horizontal">
+			        <form id="form_nuevo_proveedor" action="<?php echo base_url();?>administrador/reg_nuevo_proveedor" method="post" class="form-horizontal">
 					      <div class="modal-body">
 					      
 								    <!-- nombre del proveedor -->
