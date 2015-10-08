@@ -37,7 +37,7 @@ class Administrador extends CI_Controller {
 			$this->load->view('html/head2');
 			$this->load->view('contenido/new_fac_ventas');
 			$this->load->view('html/footer2');
-		}
+		}// new_venta  es cargar una factura
 
 		public function reg_nueva_categoria(){
 			$cat=$this->input->post('txtCategoria');
