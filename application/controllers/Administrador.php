@@ -32,6 +32,18 @@ class Administrador extends CI_Controller {
 		$this->load->view('contenido/panel_carga_facturas',$data);
 		$this->load->view('html/footer2');
 	}
+
+		// Creo una funcion en el controlador que me va a cargar
+		/*  1- El codigo de la cabecera y barras laterales y menu
+			2- El codigo del contenido
+			3- El footer o pie de pagina
+		*/
+		public function nueva_venta(){
+			$this->load->view('html/head2');
+			$this->load->view('contenido/new_fac_ventas');
+			$this->load->view('html/footer2');
+		}
+
 		public function reg_nueva_categoria(){
 			$cat=$this->input->post('txtCategoria');
 			if(strlen($cat)>3){
