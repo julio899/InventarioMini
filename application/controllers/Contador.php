@@ -35,6 +35,20 @@ class Contador extends CI_Controller {
 		
 	}
 
+	public function reg_fac_compra(){
+		if($this->input->post('idProveedor')){
+			echo "<pre>Proveedor: ".$this->input->post('idProveedor')." (ya REGISTRADO) </pre>";
+		}else{
+			echo "proceso de registro al proveedor... <br>";
+		}
+
+				if($this->session->userdata('datos_usuario') && $this->session->userdata['datos_usuario']['tipo']!='C')
+				{
+					var_dump($this->input->post() );
+					var_dump($this->session->userdata('datos_usuario') );
+				}
+	}
+
 	public function reg_nueva_empresa()
 	{
 
