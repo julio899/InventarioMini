@@ -36,18 +36,72 @@ class Contador extends CI_Controller {
 	}
 
 	public function reg_fac_compra(){
-		if($this->input->post('idProveedor')){
+				//Cargamos el Modelo
+				$this->load->model('data');
+				$datos_new_proveedor=NULL; 
+				$status=array('bandera'=>'','mensaje'=>'');
+				$idp=NULL;
+				$post=$this->input->post();
+		if($this->input->post('idProveedor')){ 
+			$idp=$this->input->post('idProveedor');
 			echo "<pre>Proveedor: ".$this->input->post('idProveedor')." (ya REGISTRADO) </pre>";
-		}else{
-			echo "proceso de registro al proveedor... <br>";
-		}
+		}else{	
+				//Verificamos si existe ese codigo de proveedor
+				if($this->data->existe_cod_proveedor( $this->input->post('cod_new_proveedor') ) == NULL){
 
+					$datos_new_proveedor=array( 	
+									'razon'		=>$this->input->post('razon'), 
+									'rif'		=>$this->input->post('rif'), 
+									'direccion'	=>$this->input->post('direccion'), 
+									'telefono'	=>"",
+									'codigo'	=>$this->input->post('cod_new_proveedor'),
+									'fecha'		=> date('Y-m-d')
+							);
+
+							if($this->data->registrar_proveedor($datos_new_proveedor) == true){
+								$status['bandera']='ok'; $status['mensaje']='Proveedor Creado Satisfactoriamente.';
+								$proveedor=$this->data->existe_cod_proveedor($this->input->post('cod_new_proveedor'));
+								$idp=$proveedor->id;
+							}//fin de if registrar_proveedor
+				}else{
+						$status['bandera']='error'; $status['mensaje']='ese codigo ya exixte en un proveedor registrelo con otro codigo.';
+						
+					}
+
+		}//Else si no esta Registrado el proveedor
+
+/*
 				if($this->session->userdata('datos_usuario') && $this->session->userdata['datos_usuario']['tipo']!='C')
 				{
 					var_dump($this->input->post() );
 					var_dump($this->session->userdata('datos_usuario') );
-				}
-	}
+				}*/
+					// Ahora Registramos la factura de compra
+					$datos_fac_compra=array(
+												'idProveedor'=>$idp,
+												'idU'=>$this->session->userdata['datos_usuario']['idu'],
+												'fecha'=>$post['fecha_fact'],
+												'afecta'=>$post['mes_fact'],
+												'monto'=>$post['monto'],
+												'descripcion'=>$post['descripcion'],
+												'nro_fac'=>$post['nro_factura'],
+												'nro_control'=>$post['nro_control'],
+												'tipo_cuenta'=>$post['tipo_cuenta']
+											);
+
+
+					if( $this->data->reg_fac_compra( $datos_fac_compra ) ){
+						//Se cargo la factura satisfactoriamente
+						$status['bandera']='ok';
+						$status['mensaje'].="<br>FACTURA CARGADA SATISFACTORIAMENTE";
+					}else{
+							$status['bandera']='error';
+							$status['mensaje'].="<br>error no se pudo cargar la factura";
+					}
+
+					$this->session->set_flashdata($status['bandera'],$status['mensaje']);	
+					redirect('contador');
+	}//FIN de funcion reg_fac_compra
 
 	public function reg_nueva_empresa()
 	{

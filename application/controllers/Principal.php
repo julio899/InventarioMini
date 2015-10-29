@@ -36,7 +36,8 @@ class Principal extends CI_Controller {
 		 $datos_usuario=array(
 		 						'usuario' => $datos['usuario'], 
 		 						'nombre_completo'=>$datos['nombre_completo'], 
-		 						'tipo'=>$datos['tipo'], 
+		 						'tipo'=>$datos['tipo'],  
+		 						'idu'=>$datos['id'], 
 		 						'validado'=>TRUE
 		 						);
 

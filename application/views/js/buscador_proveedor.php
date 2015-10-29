@@ -11,7 +11,6 @@ $('#buscador_proveedor').on('keyup', function(){
 	//console.log(valor);
 	if(valor.trim().length!=0){
 		// sino esta vacia la cadena
-
 	$.getJSON( "<?php echo base_url();?>contador/get_proveedor/"+valor, function( data ) {
 		  var items = [];
 
@@ -21,8 +20,10 @@ $('#buscador_proveedor').on('keyup', function(){
 		    //items.push( "<li id='" + key + "'>" + val + "</li>" );
 		    //console.log(key +" / id "+val.id+" / razon: "+val.razon+" / rif: "+val.rif);
 		    var rif=val.rif;
+			//console.log(codigo);
+		  	
 		  	//$("ul.lista").append("<li id='" + val.id + "'>" + val.razon + "</li>");
-		  	$("#resultado").append("<button type=\"button\" class=\"btn btn-default proveedor\" rif=\""+rif+"\" id=\""+val.id+"\" razon=\""+val.razon+"\" direccion=\""+val.direccion+"\" >" + val.razon + "</button>")
+		  	$("#resultado").append("<button type=\"button\" class=\"btn btn-default proveedor\" codigo=\""+val.codigo+"\" rif=\""+rif+"\" id=\""+val.id+"\" razon=\""+val.razon+"\" direccion=\""+val.direccion+"\" >" + val.razon + "</button>")
 		  
 
 		  });
@@ -36,9 +37,12 @@ $('#buscador_proveedor').on('keyup', function(){
 			$("#razon").val(razon);
 			$("#rif").val(rif);
 			$("#direccion").val(direccion);
+			$("#cod_proeedor").val($(this).attr('codigo'));
+			//desabilitamos los campos
 			$("#razon").attr('disabled','disabled');
 			$("#rif").attr('disabled','disabled');
 			$("#direccion").attr('disabled','disabled');
+			$("#cod_proeedor").attr('disabled','disabled');
 			console.log("rif:"+rif+"\nid:"+id+"\nrazon:"+razon);	
 			$("#resultado").html('<input type="hidden" name="idProveedor" value="'+id+'">');
 		});

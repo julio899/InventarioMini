@@ -140,7 +140,11 @@ public function __construct() {
 
 	function reg_cuenta($datos){
 		return $this->db->insert('cuentas', $datos);
-	}//fin de reg_empresa
+	}//fin de reg_cuenta
+
+	function reg_fac_compra($datos){
+		return $this->db->insert('compras', $datos);
+	}//fin de reg_fac_compra
 
 	function existe_empresa($datos)
 	{

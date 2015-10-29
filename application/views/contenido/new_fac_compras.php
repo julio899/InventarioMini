@@ -31,28 +31,35 @@
 
                                         <div class="form-group">
                                             <label>Razón Social</label>
-                                            <input class="form-control" name="razon" id="razon">
+                                            <input class="form-control" name="razon" id="razon" required>
                                             <p class="help-block">Describa el nombre del provedor</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Rif.</label>
-                                            <input class="form-control" name="rif" id="rif" placeholder="ejemplo: J-12345678-9" type="text">
+                                            <input class="form-control" name="rif" id="rif" placeholder="ejemplo: J-12345678-9" type="text" required>
                                         </div>
+
+                                        <div class="form-group" id="cod_new_proveedor">
+                                            <label>Asigne un codigo para el nuevo proveedor</label>
+                                            <input class="form-control" name="cod_new_proveedor" id="cod_proeedor" placeholder="ejemplo: 2050" type="text" required>
+                                        
+                                        </div>
+                                        
                                         <div class="form-group">
                                             <label>Dirección</label>
-                                            <textarea class="form-control" rows="3" name="direccion" id="direccion"></textarea>
+                                            <textarea class="form-control" rows="3" name="direccion" id="direccion" required></textarea>
                                         </div>
 
                                         <hr>
                                         <div class="form-group input-group">
                                         	<span class="input-group-addon">Bs.</span>
-                                            <input class="form-control" placeholder="ejemplo: 3420.50">
+                                            <input class="form-control" placeholder="ejemplo: 3420.50" name="monto" required>
                                             <span class="input-group-addon">MONTO</span>
                                         </div><hr>
 
                                         <div class="form-group">
                                             <label>Tipo de cuenta a la que se le asignara esta factura</label>
-                                            <select name="tipo_cuenta" id="tipo_cuenta" class="form-control">
+                                            <select name="tipo_cuenta" id="tipo_cuenta" class="form-control" required>
                                             	<option value="">Seleccione un Tipo de Cuenta --></option>
                                                  <?php   if (isset($cuentas)): 
                                                         for ($i=0; $i < count($cuentas); $i++) { 
@@ -65,28 +72,28 @@
 
                                         <div class="form-group">
                                             <label>Nro. de Factura</label>
-                                            <input name="nro_factura" class="form-control" placeholder="ejemplo: 0012514">
+                                            <input name="nro_factura" class="form-control" placeholder="ejemplo: 0012514" required >
                                         </div>
 
                                         <div class="form-group">
                                             <label>Nro. de Control</label>
-                                            <input name="nro_control" class="form-control" placeholder="ejemplo: 00-2031">
+                                            <input name="nro_control" class="form-control" placeholder="ejemplo: 00-2031" required >
                                         </div>
 
                                         <div class="form-group">
                                             <label>Descripción de esta factura</label>
-                                            <input class="form-control" placeholder="ejemplo: Compra de Mercancia">
+                                            <input class="form-control" placeholder="ejemplo: Compra de Mercancia" name="descripcion" required>
                                         </div>
 
 
                                         <div class="form-group">
                                             <label for="datepicker">Fecha de la Factura</label>
-                                            <input id="datepicker" name="fecha_fact" type="date">   
+                                            <input id="datepicker" name="fecha_fact" type="date" required >   
                                         </div>
 
                                         <div class="form-group">
                                             <label for="mes_afectado">Mes en que afecta la cuenta</label>
-                                            <input id="mes_afectado" class="date-mes" name="mes_fact">   
+                                            <input id="mes_afectado" class="date-mes" name="mes_fact" required >   
                                         </div>
                                         <!--js para date del mes -->
                                         <script>
