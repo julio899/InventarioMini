@@ -127,6 +127,30 @@ public function __construct() {
 		return $query->result_array(); 
 	}//fin de get_empresas
 
+	function get_fac_compras(){		
+		$this->db->where('fecha >=', date('Y-m-01'));
+		$this->db->order_by("fecha", "asc");
+		$query = $this->db->get('compras');
+
+		return $query->result_array(); 
+	}//fin de get_fac_compras
+
+	//Recibe el id
+	function get_proveedor($id){
+
+		$this->db->where('id',$id);
+		$query = $this->db->get('proveedores');
+
+		return $query->row(); 
+	}
+
+	function get_name_cuenta($codigo){
+
+		$this->db->where('codigo',$codigo);
+		$query = $this->db->get('cuentas');
+
+		return $query->row(); 	
+	}
 
 	function get_empresa($cod){		
 		$this->db->where('codigo',$cod);

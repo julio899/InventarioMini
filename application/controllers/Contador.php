@@ -93,7 +93,7 @@ class Contador extends CI_Controller {
 					if( $this->data->reg_fac_compra( $datos_fac_compra ) ){
 						//Se cargo la factura satisfactoriamente
 						$status['bandera']='ok';
-						$status['mensaje'].="<br>FACTURA CARGADA SATISFACTORIAMENTE";
+						$status['mensaje'].="  *  FACTURA CARGADA SATISFACTORIAMENTE";
 					}else{
 							$status['bandera']='error';
 							$status['mensaje'].="<br>error no se pudo cargar la factura";
@@ -203,9 +203,43 @@ class Contador extends CI_Controller {
 	public function pagina($pagina="")
 	{
 		$this->session->set_userdata('pagina',$pagina);
+
+			switch ($pagina) {
+				case 'fac_compras':
+					# cargo las facturas de compra del mes actual en Session
+					$this->session->set_userdata( 'fac_mes_actual',$this->facturas_compra() );
+				break;
+				
+				default:
+					# code...
+					break;
+			}
+
 		redirect('contador');
 	}
 	
+	public function facturas_compra(){
+		$this->load->model('data');
+		//var_dump(date('Y-m-d'));
+		$mes_actual=$this->data->get_fac_compras();
+		$datos=NULL;
+		foreach ($mes_actual as $key => $value) {
+			//var_dump($value);
+			//echo $value['fecha']."	".$value['nro_fac']."	".$value['nro_control']."	".$value['monto']."	".$value['descripcion']."	".$value['idProveedor']."	".$value['idU'];
+			$datos[]=array(
+					'fecha'			=>$value['fecha'],
+					'nro_fac'		=>$value['nro_fac'],
+					'nro_control'	=>$value['nro_control'],
+					'monto'			=>$value['monto'],
+					'descripcion'	=>$value['descripcion'],
+					'proveedor'		=>$this->data->get_proveedor( $value['idProveedor'] )->razon,
+					'cuenta'		=>$this->data->get_name_cuenta( $value['tipo_cuenta'] )->nombre
+				);
+			//var_dump($datos);
+		}
+		return $datos;
+	}//Fin de facturas_compra
+
 	public function cuentas()
 	{
 		$this->load->model('data');
