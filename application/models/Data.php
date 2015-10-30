@@ -129,6 +129,8 @@ public function __construct() {
 
 	function get_fac_compras(){		
 		$this->db->where('fecha >=', date('Y-m-01'));
+		 	$y_tambien_que = array('afecta' => date('m-Y') );
+			$this->db->like($y_tambien_que); 
 		$this->db->order_by("fecha", "asc");
 		$query = $this->db->get('compras');
 
