@@ -86,7 +86,8 @@ class Contador extends CI_Controller {
 												'descripcion'=>$post['descripcion'],
 												'nro_fac'=>$post['nro_factura'],
 												'nro_control'=>$post['nro_control'],
-												'tipo_cuenta'=>$post['tipo_cuenta']
+												'tipo_cuenta'=>$post['tipo_cuenta'],
+												'cod_compa'=>$this->session->userdata('empresa_seleccionada')['codigo']
 											);
 
 
