@@ -34,6 +34,15 @@ public function __construct() {
 		return $this->db->insert('proveedores',$proveedor);
 	}//fin de registrar_proveedor
 
+	function cuentas_desembolso(){
+		$this->db->order_by('nombre','asc');
+		$this->db->where('categoria',2);//CATEGORIA DE DESEMBOLSO EN BD
+		$y_tambien_que=array('usuario'=>$this->session->userdata['datos_usuario']['usuario']);
+		$this->db->like($y_tambien_que);
+		$query = $this->db->get('cuentas');
+		return $query->result_array();
+	}
+
 	function get_categoria($id){
 		$this->db->select('nombre_categoria');
 		$query = $this->db->where('id',$id); 

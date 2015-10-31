@@ -8,3 +8,5 @@
 		                            <a href="#" class="list-group-item"><i class="fa fa-copy">  </i> Generar Reporte</a>
 		                        </div>
                             </div>
+
+								

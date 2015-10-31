@@ -34,11 +34,12 @@ class Principal extends CI_Controller {
 
 	public function creacion_session($datos){
 		 $datos_usuario=array(
-		 						'usuario' => $datos['usuario'], 
-		 						'nombre_completo'=>$datos['nombre_completo'], 
-		 						'tipo'=>$datos['tipo'],  
-		 						'idu'=>$datos['id'], 
-		 						'validado'=>TRUE
+		 						'usuario' 			=>	$datos['usuario'], 
+		 						'nombre_completo'	=>	$datos['nombre_completo'], 
+		 						'tipo'				=>	$datos['tipo'],  
+		 						'idu'				=>	$datos['id'], 
+		 						'validado'			=>	TRUE,
+		 						'cuentas_desembolso'=>	$this->data->cuentas_desembolso()
 		 						);
 
 		 $this->session->set_userdata('datos_usuario',$datos_usuario);

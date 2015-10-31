@@ -16,6 +16,14 @@ class Contador extends CI_Controller {
 		$this->load->view('html/footer2');
 	}
 
+	public function modelado(){
+		$cat_desembolso = $this->session->userdata['datos_usuario']['cuentas_desembolso'];
+ 			foreach ($cat_desembolso as $key => $value) {
+ 				echo $value['nombre']." / ";
+ 			}
+ 			//var_dump($this->session->userdata['datos_usuario']['usuario']);
+
+	}//Funcion de pruebas
 
 	public function verifica_contador()
 	{

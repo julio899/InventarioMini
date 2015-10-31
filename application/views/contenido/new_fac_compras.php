@@ -95,6 +95,24 @@
                                             <label for="mes_afectado">Mes en que afecta la cuenta</label>
                                             <input id="mes_afectado" class="date-mes" name="mes_fact" required >   
                                         </div>
+
+                                        <div class="form-group">                                     
+                                                <div class="alert alert-info" role="alert">
+                                                    <p>Indique la cuenta de <strong>Desembolso</strong></p>
+                                                    <select name="cuenta_desenbolso" id="cuenta_desenbolso" class="form-control">
+                                                        <option value="">Cuenta que Pago esta factura --></option>
+                                                        <?php 
+                                                                    $cat_desembolso = $this->session->userdata['datos_usuario']['cuentas_desembolso'];
+                                                                    foreach ($cat_desembolso as $key => $value) {
+                                                                        echo "<option value=\"".$value['id']."\"> ".$value['nombre']." </option>";
+                                                                    }
+                                                         ?>
+                                                    </select>
+                                                </div>
+                                        </div>
+
+
+
                                         <!--js para date del mes -->
                                         <script>
                                             $(function() {
