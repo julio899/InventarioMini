@@ -43,6 +43,26 @@ class Contador extends CI_Controller {
 		
 	}
 
+	public function consultar_compras_mes_especifico($mes_year){
+		$this->load->model('data');
+		
+		$mes_especifico=$this->data->get_compras_mes_especifico( $mes_year );
+		$datos=NULL;
+		foreach ($mes_especifico as $key => $value) {
+				$datos[]=array(
+					'fecha'			=>$value['fecha'],
+					'nro_fac'		=>$value['nro_fac'],
+					'nro_control'	=>$value['nro_control'],
+					'monto'			=>$value['monto'],
+					'descripcion'	=>$value['descripcion'],
+					'proveedor'		=>$this->data->get_proveedor( $value['idProveedor'] )->razon,
+					'cuenta'		=>$this->data->get_name_cuenta( $value['tipo_cuenta'] )->nombre
+				);
+		}
+					//$this->session->set_userdata( 'fac_mes_especifico',$datos );
+		return $datos;
+	}
+
 	public function reg_fac_compra(){
 				//Cargamos el Modelo
 				$this->load->model('data');
@@ -50,41 +70,42 @@ class Contador extends CI_Controller {
 				$status=array('bandera'=>'','mensaje'=>'');
 				$idp=NULL;
 				$post=$this->input->post();
-		if($this->input->post('idProveedor')){ 
-			$idp=$this->input->post('idProveedor');
-			echo "<pre>Proveedor: ".$this->input->post('idProveedor')." (ya REGISTRADO) </pre>";
-		}else{	
-				//Verificamos si existe ese codigo de proveedor
-				if($this->data->existe_cod_proveedor( $this->input->post('cod_new_proveedor') ) == NULL){
+					if($this->input->post('idProveedor'))
+					{ 
+							$idp=$this->input->post('idProveedor');
+							echo "<pre>Proveedor: ".$this->input->post('idProveedor')." (ya REGISTRADO) </pre>";
+					}else{	
+						//Verificamos si existe ese codigo de proveedor
+						if($this->data->existe_cod_proveedor( $this->input->post('cod_new_proveedor') ) == NULL)
+						{
 
-					$datos_new_proveedor=array( 	
-									'razon'		=>$this->input->post('razon'), 
-									'rif'		=>$this->input->post('rif'), 
-									'direccion'	=>$this->input->post('direccion'), 
-									'telefono'	=>"",
-									'codigo'	=>$this->input->post('cod_new_proveedor'),
-									'fecha'		=> date('Y-m-d')
-							);
+									$datos_new_proveedor=array( 	
+													'razon'		=>$this->input->post('razon'), 
+													'rif'		=>$this->input->post('rif'), 
+													'direccion'	=>$this->input->post('direccion'), 
+													'telefono'	=>"",
+													'codigo'	=>$this->input->post('cod_new_proveedor'),
+													'fecha'		=> date('Y-m-d')
+											);
 
-							if($this->data->registrar_proveedor($datos_new_proveedor) == true){
-								$status['bandera']='ok'; $status['mensaje']='Proveedor Creado Satisfactoriamente.';
-								$proveedor=$this->data->existe_cod_proveedor($this->input->post('cod_new_proveedor'));
-								$idp=$proveedor->id;
-							}//fin de if registrar_proveedor
-				}else{
-						$status['bandera']='error'; $status['mensaje']='ese codigo ya exixte en un proveedor registrelo con otro codigo.';
-						
-					}
+											if($this->data->registrar_proveedor($datos_new_proveedor) == true){
+												$status['bandera']='ok'; $status['mensaje']='Proveedor Creado Satisfactoriamente.';
+												$proveedor=$this->data->existe_cod_proveedor($this->input->post('cod_new_proveedor'));
+												$idp=$proveedor->id;
+											}//fin de if registrar_proveedor
+						}else{
+									$status['bandera']='error'; $status['mensaje']='ese codigo ya exixte en un proveedor registrelo con otro codigo.';
+								}
 
-		}//Else si no esta Registrado el proveedor
+				}//Else si no esta Registrado el proveedor
 
-/*
-				if($this->session->userdata('datos_usuario') && $this->session->userdata['datos_usuario']['tipo']!='C')
-				{
-					var_dump($this->input->post() );
-					var_dump($this->session->userdata('datos_usuario') );
-				}*/
-					// Ahora Registramos la factura de compra
+							/*
+											if($this->session->userdata('datos_usuario') && $this->session->userdata['datos_usuario']['tipo']!='C')
+											{
+												var_dump($this->input->post() );
+												var_dump($this->session->userdata('datos_usuario') );
+											}*/
+												// Ahora Registramos la factura de compra
 					$datos_fac_compra=array(
 												'idProveedor'=>$idp,
 												'idU'=>$this->session->userdata['datos_usuario']['idu'],
@@ -217,6 +238,12 @@ class Contador extends CI_Controller {
 				case 'fac_compras':
 					# cargo las facturas de compra del mes actual en Session
 					$this->session->set_userdata( 'fac_mes_actual',$this->facturas_compra() );
+				break;
+				case 'fac_compras_mes_especifico':
+					$mes_especifico=$this->input->post(); $this->session->set_userdata( 'mes_especifico',$mes_especifico);
+					$this->session->set_userdata( 'fac_mes_especifico',$this->consultar_compras_mes_especifico($mes_especifico) );
+					//var_dump($this->session->userdata( 'fac_mes_especifico'));
+					//exit();
 				break;
 				
 				default:

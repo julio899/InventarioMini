@@ -7,11 +7,11 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">CONSULTAR MES ESPECIFICO</h4>
 			      </div>
-			        <form action="<?php echo base_url();?>contador" method="post">
+			        <form action="<?php echo base_url();?>contador/pagina/fac_compras_mes_especifico" method="post">
 					      <div class="modal-body">					      
 							<div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <input type="number" min="2000" max="2030" class="form-control" name="year" placeholder="Año <?php echo date('Y'); ?>" required>
+                                            <input type="number" min="2000" max="2030" class="form-control" name="year" placeholder="Año <?php echo date('Y'); ?>" value="<?php echo date('Y'); ?>" required>
                            	</div>
 
                            	<div class="form-group input-group">

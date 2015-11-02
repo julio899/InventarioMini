@@ -15,6 +15,8 @@ public function __construct() {
 		return $query->row(); 
 	}//fin de funcion validacion
 
+
+
 	function registrar_producto($producto=""){
 		/* Retornos (existe -> En caso que ya exista )
 					(TRUE -> cuando se Registre )
@@ -90,7 +92,6 @@ public function __construct() {
 					$retorno=$this->db->insert('categorias', $data);
 		}//fin del else
 		return $retorno;
-
 	}//fin de funcion registrar_categoria
 
 	function existe_cod_producto($cod=""){
@@ -137,7 +138,7 @@ public function __construct() {
 	}//fin de get_empresas
 
 	function get_fac_compras(){		
-		$this->db->where('fecha >=', date('Y-m-01'));
+		//$this->db->where('fecha >=', date('Y-m-01'));
 		 	$y_tambien_que = array('afecta' => date('m-Y'), 'cod_compa'=>$this->session->userdata('empresa_seleccionada')['codigo'] );
 			$this->db->like($y_tambien_que); 
 		$this->db->order_by("fecha", "asc");
@@ -145,6 +146,17 @@ public function __construct() {
 
 		return $query->result_array(); 
 	}//fin de get_fac_compras
+
+	function get_compras_mes_especifico($datos){
+		//$this->db->where('fecha > ', $datos['year'].'-'.$datos['mes'].'-01' );
+		//$this->db->where('fecha <=', $datos['year'].'-'.$datos['mes'].'-31' );
+		$y_tambien_que = array('afecta' => $datos['mes'].'-'.$datos['year'], 'cod_compa'=>$this->session->userdata('empresa_seleccionada')['codigo'] );
+		$this->db->like($y_tambien_que); 
+		$this->db->order_by("fecha", "asc");
+		$query = $this->db->get('compras');
+		return $query->result_array();
+
+	}
 
 	//Recibe el id
 	function get_proveedor($id){

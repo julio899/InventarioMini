@@ -32,10 +32,12 @@
                        case 'fac_compras':
                            $this->load->view('contenido/fac_compras');
                            break;
+                       case 'fac_compras_mes_especifico':
+                            $this->load->view('contenido/fac_compras_mes_especifico');
+                            break;
                        case 'new_fac_compras':
                            $this->load->view('contenido/new_fac_compras');
                            break;
-                       
                        default:
                            # code...
                            break;

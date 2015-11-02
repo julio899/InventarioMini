@@ -1,22 +1,22 @@
 
 <div class="row">
 	<div class="col-lg-9">
-    <?php   if ( $this->session->userdata( 'fac_mes_actual' )  ): 
-$a[1] = "Enero"; 
-$a[2] = "Febrero"; 
-$a[3] = "Marzo"; 
-$a[4] = "Abril"; 
-$a[5] = "Mayo"; 
-$a[6] = "Junio"; 
-$a[7] = "Julio"; 
-$a[8] = "Agosto";
-$a[9] = "Septiembre";
-$a[10] = "Octubre";
-$a[11] = "Noviembre";
-$a[12] = "Diciembre";
-     ?>
-		<h3>Tabla de facturas de compras del mes en curso <?php echo "[".date('m')." - ".$a[ date('m') ]."]";?></h3>
-    <?php endif; ?>
+                    <?php   if ( $this->session->userdata( 'fac_mes_especifico' )  ): 
+                            $a[1] = "Enero"; 
+                            $a[2] = "Febrero"; 
+                            $a[3] = "Marzo"; 
+                            $a[4] = "Abril"; 
+                            $a[5] = "Mayo"; 
+                            $a[6] = "Junio"; 
+                            $a[7] = "Julio"; 
+                            $a[8] = "Agosto";
+                            $a[9] = "Septiembre";
+                            $a[10] = "Octubre";
+                            $a[11] = "Noviembre";
+                            $a[12] = "Diciembre";
+                     ?>
+		              <h3>Tabla de facturas de compras del mes <?php echo "[".$this->session->userdata('mes_especifico')['mes'] ." - ".$a[ $this->session->userdata('mes_especifico')['mes'] ]."]";?></h3>
+                    <?php endif; ?>
 		<table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -28,24 +28,9 @@ $a[12] = "Diciembre";
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <!--
-                                    <tr>
-                                        <td>compra de mercancia</td>
-                                        <td>Imprenta la Tinta</td>
-                                        <td>Inversiones</td>
-                                        <td>01-09-2015</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr>
-                                        <td>compra de impresora</td>
-                                        <td>K-TUX, C.A</td>
-                                        <td>Gastos de Papeleria</td>
-                                        <td>07-09-2015</td>
-                                        <td>$234.12</td>
-                                    </tr> -->
                                     <?php   
-                                            if ( $this->session->userdata( 'fac_mes_actual' )  ): 
-                                                $mes_actual=$this->session->userdata( 'fac_mes_actual' );
+                                            if ( $this->session->userdata( 'fac_mes_especifico' )  ): 
+                                                $mes_actual=$this->session->userdata( 'fac_mes_especifico' );
                                                     foreach ($mes_actual as $key => $value) {
                                                         echo "
                                                                 <tr>
