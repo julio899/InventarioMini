@@ -47,12 +47,13 @@ $a[12] = "Diciembre";
                                             if ( $this->session->userdata( 'fac_mes_actual' )  ): 
                                                 $mes_actual=$this->session->userdata( 'fac_mes_actual' );
                                                     foreach ($mes_actual as $key => $value) {
+                                                       $fecha=date("d-m-Y",strtotime($value['fecha'])); 
                                                         echo "
                                                                 <tr>
                                                                     <td>".strtolower($value['descripcion'])."</td>
                                                                     <td>".strtolower($value['proveedor'])."</td>
                                                                     <td>".strtoupper($value['cuenta'])."</td>
-                                                                    <td>". $value['fecha']."</td>
+                                                                    <td>". $fecha."</td>
                                                                     <td>".number_format($value['monto'],2,',','.')."</td>
                                                                 </tr>
                                                         ";
