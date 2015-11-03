@@ -47,6 +47,9 @@
 .bs-callout-info {
   border-left-color: #1b809e;
 }
+textarea#descripcion{
+    resize: none;
+}
     </style>
 
         <!-- jQuery -->

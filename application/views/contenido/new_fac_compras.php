@@ -53,32 +53,39 @@
                                         <hr>
                                         <div class="form-group input-group">
                                         	<span class="input-group-addon">Bs.</span>
-                                            <input class="form-control" placeholder="ejemplo: 3420.50" name="monto" required>
+                                            <input class="form-control"  type="number" step="any" placeholder="ejemplo: 3420.50" name="monto" required>
                                             <span class="input-group-addon">MONTO</span>
                                         </div><hr>
 
-                                        <div class="form-group">
-                                            <label>Tipo de cuenta a la que se le asignara esta factura</label>
-                                            <select name="tipo_cuenta" id="tipo_cuenta" class="form-control" required>
-                                            	<option value="">Seleccione un Tipo de Cuenta --></option>
-                                                 <?php   if (isset($cuentas)): 
-                                                        for ($i=0; $i < count($cuentas); $i++) { 
-                                                            echo '<option value="'.$cuentas[$i]['codigo'].'">[ '.$cuentas[$i]['codigo']." ] ". strtoupper($cuentas[$i]['nombre'] ).'</option>';
-                                                        }
-                                                    endif; ?>
-                                            </select>
-
+                                        
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="form-group">
+                                                    <label>Nro. de Factura</label>
+                                                    <input name="nro_factura" class="form-control" placeholder="ejemplo: 0012514" required >
+                                                </div>  
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-group">
+                                                    <label>Nro. de Control</label>
+                                                    <input name="nro_control" class="form-control" placeholder="ejemplo: 00-2031" required >
+                                                </div>                                                
+                                            </div>
+                                            <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Tipo de cuenta a la que se le asignara esta factura</label>
+                                                        <select name="tipo_cuenta" id="tipo_cuenta" class="form-control" required>
+                                                            <option value="">Seleccione un Tipo de Cuenta --></option>
+                                                             <?php   if (isset($cuentas)): 
+                                                                    for ($i=0; $i < count($cuentas); $i++) { 
+                                                                        echo '<option value="'.$cuentas[$i]['codigo'].'">[ '.$cuentas[$i]['codigo']." ] ". strtoupper($cuentas[$i]['nombre'] ).'</option>';
+                                                                    }
+                                                                endif; ?>
+                                                        </select>
+                                                    </div>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Nro. de Factura</label>
-                                            <input name="nro_factura" class="form-control" placeholder="ejemplo: 0012514" required >
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Nro. de Control</label>
-                                            <input name="nro_control" class="form-control" placeholder="ejemplo: 00-2031" required >
-                                        </div>
 
                                         <div class="form-group">
                                             <label>Descripción de esta factura</label>
@@ -98,16 +105,28 @@
 
                                         <div class="form-group">                                     
                                                 <div class="alert alert-info" role="alert">
-                                                    <p>Indique la cuenta de <strong>Desembolso</strong></p>
-                                                    <select name="cuenta_desenbolso" id="cuenta_desenbolso" class="form-control">
-                                                        <option value="">Cuenta que Pago esta factura --></option>
-                                                        <?php 
-                                                                    $cat_desembolso = $this->session->userdata['datos_usuario']['cuentas_desembolso'];
-                                                                    foreach ($cat_desembolso as $key => $value) {
-                                                                        echo "<option value=\"".$value['id']."\"> ".$value['nombre']." </option>";
-                                                                    }
-                                                         ?>
-                                                    </select>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                          
+                                                                <p>Indique la cuenta de <strong>Desembolso</strong></p>
+                                                                <select name="cuenta_desenbolso" id="cuenta_desenbolso" class="form-control">
+                                                                    <option value="">Cuenta que Pago esta factura --></option>
+                                                                    <?php 
+                                                                                $cat_desembolso = $this->session->userdata['datos_usuario']['cuentas_desembolso'];
+                                                                                foreach ($cat_desembolso as $key => $value) {
+                                                                                    echo "<option value=\"".$value['id']."\"> ".$value['nombre']." </option>";
+                                                                                }
+                                                                     ?>
+                                                                </select>
+            
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                                <p><strong>Descripción de Asiento:</strong></p>
+                                                                <textarea name="descripcion" id="descripcion" cols="10" class="form-control"></textarea>  
+                                                        </div>
+
+                                                    </div>
                                                 </div>
                                         </div>
 
