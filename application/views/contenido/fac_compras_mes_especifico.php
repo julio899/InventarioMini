@@ -32,10 +32,10 @@
 		<table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Concepto</th>
                                         <th>Razon Social</th>
+                                        <th>FACT. #</th>
                                         <th>Tipo de Cuenta</th>
-                                        <th>Fecha</th>
+                                        <th>Fecha de FACT</th>
                                         <th>base</th>
                                         <th>IVA</th>
                                         <th>Monto</th>
@@ -55,8 +55,8 @@
                                                         $total+=$monto_temp;  //number_format( numero ,2,',','.') 
                                                         echo "
                                                                 <tr>
-                                                                    <td>".strtolower($value['descripcion'])."</td>
                                                                     <td>".strtolower($value['proveedor'])."</td>
+                                                                    <td>".$value['nro_fac']."</td>
                                                                     <td>".strtoupper($value['cuenta'])."</td>
                                                                     <td>". $fecha."</td>
                                                                     <td>". number_format( round( ($monto_temp /1.12) ,2) ,2,',','.')."</td>
@@ -72,9 +72,9 @@
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td></td>
-                                                                    <td><?php echo number_format( $base,2,',','.');?></td>
-                                                                    <td><?php echo number_format( $iva,2,',','.');?></td>
-                                                                    <td><?php echo number_format( $total,2,',','.');?></td>
+                                                                    <td class="td-fuente label-primary" ><?php echo number_format( $base,2,',','.');?></td>
+                                                                    <td class="td-fuente label-success"><?php echo number_format( $iva,2,',','.');?></td>
+                                                                    <td class="td-fuente label-danger"><?php echo number_format( $total,2,',','.');?></td>
                                                                 </tr>
                                 </tbody>
         </table>

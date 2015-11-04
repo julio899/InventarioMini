@@ -53,6 +53,10 @@ textarea#descripcion{
 label#base,label#iva{
 font-size: 1.5em;
 }
+td.td-fuente{
+    font-size: 1.2em;
+    color: white;
+}
     </style>
 
         <!-- jQuery -->
