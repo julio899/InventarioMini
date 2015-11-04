@@ -51,11 +51,27 @@
                                         </div>
 
                                         <hr>
-                                        <div class="form-group input-group">
-                                        	<span class="input-group-addon">Bs.</span>
-                                            <input class="form-control"  type="number" step="any" placeholder="ejemplo: 3420.50" name="monto" required>
-                                            <span class="input-group-addon">MONTO</span>
-                                        </div><hr>
+                                        
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon">Bs.</span>
+                                                    <input class="form-control" id="monto" type="number" step="any" placeholder="ejemplo: 3420.50" name="monto" required>
+                                                    <span class="input-group-addon">MONTO</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <p>Base: <label id="base" class="label label-primary"></label></p>
+                                            </div>
+
+                                            <div class="col-lg-3">
+                                                <p><strong>I.V.A: </strong><label id="iva" class="label label-success"></label></p>
+                                            </div>
+                                        </div>
+
+                                        <hr>
 
                                         
                                         <div class="row">
@@ -123,7 +139,7 @@
 
                                                         <div class="col-lg-6">
                                                                 <p><strong>Descripción de Asiento:</strong></p>
-                                                                <textarea name="descripcion" id="descripcion" cols="10" class="form-control"></textarea>  
+                                                                <textarea name="descripcion_a" id="descripcion_a" cols="10" class="form-control"></textarea>  
                                                         </div>
 
                                                     </div>

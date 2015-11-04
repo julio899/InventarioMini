@@ -50,6 +50,9 @@
 textarea#descripcion{
     resize: none;
 }
+label#base,label#iva{
+font-size: 1.5em;
+}
     </style>
 
         <!-- jQuery -->

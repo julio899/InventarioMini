@@ -73,7 +73,7 @@ class Contador extends CI_Controller {
 					if($this->input->post('idProveedor'))
 					{ 
 							$idp=$this->input->post('idProveedor');
-							echo "<pre>Proveedor: ".$this->input->post('idProveedor')." (ya REGISTRADO) </pre>";
+							//echo "<pre>Proveedor: ".$this->input->post('idProveedor')." (ya REGISTRADO) </pre>";
 					}else{	
 						//Verificamos si existe ese codigo de proveedor
 						if($this->data->existe_cod_proveedor( $this->input->post('cod_new_proveedor') ) == NULL)
@@ -106,6 +106,8 @@ class Contador extends CI_Controller {
 												var_dump($this->session->userdata('datos_usuario') );
 											}*/
 												// Ahora Registramos la factura de compra
+											//var_dump($post);
+											//exit();
 					$datos_fac_compra=array(
 												'idProveedor'=>$idp,
 												'idU'=>$this->session->userdata['datos_usuario']['idu'],

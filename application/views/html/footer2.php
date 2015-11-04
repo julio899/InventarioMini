@@ -20,6 +20,7 @@
 	<?php $this->load->view('modal/crear_empresa');?>
 	<?php $this->load->view('modal/crear_nueva_cuenta');?>
 	<?php $this->load->view('modal/consultar_mes_especifico');?>
+	<?php $this->load->view('js/new_fac_compra');?>
 	<?php endif;?>
 
 <script>
