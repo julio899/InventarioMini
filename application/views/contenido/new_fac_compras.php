@@ -88,25 +88,16 @@
                                                 </div>                                                
                                             </div>
                                             <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label>Tipo de cuenta a la que se le asignara esta factura</label>
-                                                        <select name="tipo_cuenta" id="tipo_cuenta" class="form-control" required>
-                                                            <option value="">Seleccione un Tipo de Cuenta --></option>
-                                                             <?php   if (isset($cuentas)): 
-                                                                    for ($i=0; $i < count($cuentas); $i++) { 
-                                                                        echo '<option value="'.$cuentas[$i]['codigo'].'">[ '.$cuentas[$i]['codigo']." ] ". strtoupper($cuentas[$i]['nombre'] ).'</option>';
-                                                                    }
-                                                                endif; ?>
-                                                        </select>
-                                                    </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Descripción de esta factura</label>
+                                                                    <input class="form-control" placeholder="ejemplo: Compra de Mercancia" name="descripcion" required>
+                                                                </div>
+
                                             </div>
                                         </div>
 
 
-                                        <div class="form-group">
-                                            <label>Descripción de esta factura</label>
-                                            <input class="form-control" placeholder="ejemplo: Compra de Mercancia" name="descripcion" required>
-                                        </div>
 
 
                                         <div class="form-group">
@@ -119,31 +110,45 @@
                                             <input id="mes_afectado" class="date-mes" name="mes_fact" required >   
                                         </div>
 
-                                        <div class="form-group">                                     
-                                                <div class="alert alert-info" role="alert">
+                                        <div class="form-group">        
                                                     <div class="row">
+
                                                         <div class="col-lg-6">
-                                                          
+                                                            
+                                                                <div class="form-group alert alert-warning" role="alert">
+                                                                    <label>Tipo de cuenta a la que se le asignara esta factura</label>
+                                                                    <select name="tipo_cuenta" id="tipo_cuenta" class="form-control" required>
+                                                                        <option value="">Seleccione un Tipo de Cuenta --></option>
+                                                                         <?php   if (isset($cuentas)): 
+                                                                                for ($i=0; $i < count($cuentas); $i++) { 
+                                                                                    if($cuentas[$i]['categoria']!='2'){
+                                                                                     
+                                                                                    echo '<option value="'.$cuentas[$i]['codigo'].'">[ '.$cuentas[$i]['codigo']." ] ". strtoupper($cuentas[$i]['nombre'] ).'</option>';
+                                                                                
+                                                                                    }
+                                                                                }
+                                                                            endif; ?>
+                                                                    </select>
+                                                                </div>
+
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                          <div class="form-group alert alert-info" role="alert">
                                                                 <p>Indique la cuenta de <strong>Desembolso</strong></p>
                                                                 <select name="cuenta_desenbolso" id="cuenta_desenbolso" class="form-control">
                                                                     <option value="">Cuenta que Pago esta factura --></option>
                                                                     <?php 
                                                                                 $cat_desembolso = $this->session->userdata['datos_usuario']['cuentas_desembolso'];
                                                                                 foreach ($cat_desembolso as $key => $value) {
-                                                                                    echo "<option value=\"".$value['id']."\"> ".$value['nombre']." </option>";
+                                                                                    echo "<option value=\"".$value['codigo']."\"> ".$value['nombre']." </option>";
                                                                                 }
                                                                      ?>
                                                                 </select>
-            
-                                                        </div>
-
-                                                        <div class="col-lg-6">
-                                                                <p><strong>Descripción de Asiento:</strong></p>
-                                                                <textarea name="descripcion_a" id="descripcion_a" cols="10" class="form-control"></textarea>  
+                                                            </div>
                                                         </div>
 
                                                     </div>
-                                                </div>
                                         </div>
 
 

@@ -16,7 +16,6 @@ public function __construct() {
 	}//fin de funcion validacion
 
 
-
 	function registrar_producto($producto=""){
 		/* Retornos (existe -> En caso que ya exista )
 					(TRUE -> cuando se Registre )

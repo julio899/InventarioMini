@@ -26,8 +26,8 @@ class Contador extends CI_Controller {
 			echo "Tipo Cuenta  [ ".$value['tipo_cuenta']." ] / ".$this->data->get_name_cuenta($value['tipo_cuenta'])->nombre ."<br>";
 			//echo $value['COUNT( * )']."<- cantidad de FACT<br>"; 
 			$nro_facturas=$this->data->get_fact_prov_cta(array('afecta'=>'09-2015','idP'=>$value['idProveedor'],'cta'=> $value['tipo_cuenta']) );
-			foreach ( $nro_facturas as $key => $value) {
-				echo "\t\t".($key+1)." ).- FAC #:".$value['nro_fac']." ( ".$value['monto'].")<br>";
+			foreach ( $nro_facturas as $key => $value2) {
+				echo "\t\t".($key+1)." ).- FAC #:".$value2['nro_fac']." * \t\t\t[".$value2['monto']."] <br>";
 			}
 			echo "- - - - - - - - - - - - - - - - - - - - - - - monto de sumatorias de proveedor -> [$monto]";
 			echo "<hr>";
@@ -127,6 +127,7 @@ class Contador extends CI_Controller {
 												'nro_fac'=>$post['nro_factura'],
 												'nro_control'=>$post['nro_control'],
 												'tipo_cuenta'=>$post['tipo_cuenta'],
+												'contra_cuenta'=>$post['cuenta_desenbolso'],
 												'cod_compa'=>$this->session->userdata('empresa_seleccionada')['codigo']
 											);
 
