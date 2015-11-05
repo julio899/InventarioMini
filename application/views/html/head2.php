@@ -57,6 +57,15 @@ td.td-fuente{
     font-size: 1.2em;
     color: white;
 }
+td.L{
+    text-align: left;
+}
+td.R{
+    text-align: right;
+}
+td.C{
+    text-align: center;
+}
     </style>
 
         <!-- jQuery -->

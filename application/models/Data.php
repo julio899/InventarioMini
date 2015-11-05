@@ -45,6 +45,12 @@ public function __construct() {
 		return $query->result_array();
 	}
 
+	function asientos_compras($mes_year){
+		$query = $this->db->query("SELECT  `idProveedor` , SUM( monto ) ,  `tipo_cuenta` , COUNT( * ) 
+FROM  `compras` WHERE  `afecta` LIKE  '$mes_year' GROUP BY  `tipo_cuenta` ,  `idProveedor`");
+		return $query->result_array();
+	}
+
 	function get_categoria($id){
 		$this->db->select('nombre_categoria');
 		$query = $this->db->where('id',$id); 
@@ -165,6 +171,17 @@ public function __construct() {
 		$query = $this->db->get('proveedores');
 
 		return $query->row(); 
+	}
+
+
+		// recibe fecha_afectada, id_proveedor ,cod_categoria,
+	function get_fact_prov_cta($datos){
+			//Renorna las facturas de un proveedor en una misma categoria
+		$query = $this->db->query("SELECT  `nro_fac`, `monto` FROM  `compras` WHERE  `afecta` LIKE  '".$datos['afecta']."'
+AND  `idProveedor` =".$datos['idP']." AND  `tipo_cuenta` LIKE  '".$datos['cta']."'");
+		return $query->result_array();
+		
+
 	}
 
 	function get_name_cuenta($codigo){

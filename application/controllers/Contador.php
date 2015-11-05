@@ -17,12 +17,21 @@ class Contador extends CI_Controller {
 	}
 
 	public function modelado(){
-		$cat_desembolso = $this->session->userdata['datos_usuario']['cuentas_desembolso'];
- 			foreach ($cat_desembolso as $key => $value) {
- 				echo $value['nombre']." / ";
- 			}
- 			//var_dump($this->session->userdata['datos_usuario']['usuario']);
-
+		$this->load->model('data');
+		$asientos=$this->data->asientos_compras('09-2015');
+		foreach ($asientos as $key => $value) {
+			echo "Proveedor  / ".$this->data->get_proveedor($value['idProveedor'])->razon ."<br>";
+			$monto=$value['SUM( monto )'];
+			
+			echo "Tipo Cuenta  [ ".$value['tipo_cuenta']." ] / ".$this->data->get_name_cuenta($value['tipo_cuenta'])->nombre ."<br>";
+			//echo $value['COUNT( * )']."<- cantidad de FACT<br>"; 
+			$nro_facturas=$this->data->get_fact_prov_cta(array('afecta'=>'09-2015','idP'=>$value['idProveedor'],'cta'=> $value['tipo_cuenta']) );
+			foreach ( $nro_facturas as $key => $value) {
+				echo "\t\t".($key+1)." ).- FAC #:".$value['nro_fac']." ( ".$value['monto'].")<br>";
+			}
+			echo "- - - - - - - - - - - - - - - - - - - - - - - monto de sumatorias de proveedor -> [$monto]";
+			echo "<hr>";
+		}
 	}//Funcion de pruebas
 
 	public function verifica_contador()
