@@ -84,7 +84,7 @@
 	</div>
 </div>
 <div class="row">
-        <table class="table">
+        <table class="table table-hover">
             <theader>
                 <tr>
                 <th>FAC.</th>
@@ -112,32 +112,32 @@
                                                                 <tr>
                                                                     <td class=\"L\">".$value['nro_fac']."</td>
                                                                     <td><div class=\"row\">
-                                                                                                                <div class=\"col-lg-4\">".strtoupper($value['descripcion'])."</div>
-                                                                                                                    <div class=\"col-lg-8\">".strtoupper($value['cuenta'])."[ COD. CTA ".$value['tipo_cuenta']." ]
+                                                                                                                <div class=\"col-lg-3\">".strtoupper($value['descripcion'])."</div>
+                                                                                                                    <div class=\"col-lg-9\">".strtoupper($value['cuenta'])." [ ".$value['tipo_cuenta']." ]
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                             <div class=\"row\">
                                                                                                                 <div class=\"col-lg-8\"></div>
-                                                                                                                    <div class=\"col-lg-4\">".strtoupper($value['xcuenta'])."[ COD. CTA ".$value['contra_cuenta']." ]
+                                                                                                                    <div class=\"col-lg-4\">".strtoupper($value['xcuenta'])." [ ".$value['contra_cuenta']." ]
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                                                                         
                                                                     </td>
                                                                     <td class=\"R\">
-                                                                        <div class=\"L\">
-                                                                         "; if($value['aumenta']=='D'){echo $value['monto'];}else{echo "<br>";} echo "   
+                                                                        <div class=\"R\">
+                                                                         "; if($value['aumenta']=='D'){echo number_format($base_temp,2,',','.');}else{echo "<br>";} echo "   
                                                                         </div>
-                                                                        <div class=\"L\">
-                                                                         "; if($value['xdisminuye']=='D'){echo $value['monto'];} echo "   
+                                                                        <div class=\"R\">
+                                                                         "; if($value['xdisminuye']=='D'){echo number_format($base_temp,2,',','.');} echo "   
                                                                         </div>
                                                                     </td>
                                                                     <td class=\"R\">
                                                                     
-                                                                        <div class=\"L\">
-                                                                         "; if($value['aumenta']!='D'){echo $value['monto'];}else{echo "<br>";} echo "   
+                                                                        <div class=\"R\">
+                                                                         "; if($value['aumenta']!='D'){echo number_format($base_temp,2,',','.');}else{echo "<br>";} echo "   
                                                                         </div>
-                                                                        <div class=\"L\">
-                                                                         "; if($value['xdisminuye']!='D'){echo $value['monto'];} echo "   
+                                                                        <div class=\"R\">
+                                                                         "; if($value['xdisminuye']!='D'){echo number_format($base_temp,2,',','.');} echo "   
                                                                         </div>
                                                                     </td>
                                                                     <td>". $fecha."</td>
