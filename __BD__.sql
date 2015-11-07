@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-11-2015 a las 21:17:31
+-- Tiempo de generación: 06-11-2015 a las 23:40:11
 -- Versión del servidor: 5.5.44-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.13
 
@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `compras` (
   `nro_fac` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `nro_control` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `tipo_cuenta` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `contra_cuenta` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `status` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'A',
   `cod_compa` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`),
@@ -101,20 +102,22 @@ CREATE TABLE IF NOT EXISTS `compras` (
   KEY `idU` (`idU`),
   KEY `tipo_cuenta` (`tipo_cuenta`),
   KEY `idU_2` (`idU`),
-  KEY `tipo_cuenta_2` (`tipo_cuenta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=16 ;
+  KEY `tipo_cuenta_2` (`tipo_cuenta`),
+  KEY `contra_cuenta` (`contra_cuenta`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=17 ;
 
 --
 -- Volcado de datos para la tabla `compras`
 --
 
-INSERT INTO `compras` (`id`, `idProveedor`, `idU`, `fecha`, `afecta`, `monto`, `tipo`, `descripcion`, `nro_fac`, `nro_control`, `tipo_cuenta`, `status`, `cod_compa`) VALUES
-(10, 11, 3, '2015-09-07', '09-2015', '6249.47', '', 'COMPRA DE MERCANCIA', '17848', '00-0010098', '2001', 'A', '0001'),
-(11, 11, 3, '2015-09-25', '09-2015', '5465.61', '', 'COMPRA DE MERCANCIA', '18152', '00-010402', '2001', 'A', '0001'),
-(12, 12, 3, '2015-09-14', '09-2015', '4846.6', '', 'COMPRADE PINTURAS', 'A0616852', '00-0134616', '2001', 'A', '0001'),
-(13, 13, 3, '2015-09-28', '09-2015', '18995.20', '', 'BROCHAS', '7303', '00-007963', '2003', 'A', '0001'),
-(14, 14, 3, '2015-09-17', '09-2015', '2000', '', 'HONORARIOS CONTABLES', '218', '00-000218', '1016', 'A', '0001'),
-(15, 13, 3, '2015-09-11', '09-2015', '14728', '', 'COMPRA DE MERCANCIA', '7097', '0-007754', '2003', 'A', '0001');
+INSERT INTO `compras` (`id`, `idProveedor`, `idU`, `fecha`, `afecta`, `monto`, `tipo`, `descripcion`, `nro_fac`, `nro_control`, `tipo_cuenta`, `contra_cuenta`, `status`, `cod_compa`) VALUES
+(10, 11, 3, '2015-09-07', '09-2015', '6249.47', '', 'COMPRA DE MERCANCIA', '17848', '00-0010098', '2001', '1011', 'A', '0001'),
+(11, 11, 3, '2015-09-25', '09-2015', '5465.61', '', 'COMPRA DE MERCANCIA', '18152', '00-010402', '2001', '1011', 'A', '0001'),
+(12, 12, 3, '2015-09-14', '09-2015', '4849.6', '', 'COMPRADE PINTURAS', 'A0616852', '00-0134616', '2001', '1011', 'A', '0001'),
+(13, 13, 3, '2015-09-28', '09-2015', '18995.20', '', 'BROCHAS', '7303', '00-007963', '2003', '1011', 'A', '0001'),
+(14, 14, 3, '2015-09-17', '09-2015', '2000', '', 'HONORARIOS CONTABLES', '218', '00-000218', '1016', '1011', 'A', '0001'),
+(15, 13, 3, '2015-09-11', '09-2015', '14728', '', 'COMPRA DE MERCANCIA', '7097', '0-007754', '2003', '1011', 'A', '0001'),
+(16, 10, 3, '2015-11-06', '11-2015', '100', '', 'APERITIVO', '100', '100', '1016', '1011', 'A', '0001');
 
 -- --------------------------------------------------------
 
@@ -324,6 +327,7 @@ ALTER TABLE `categoria_cuenta`
 -- Filtros para la tabla `compras`
 --
 ALTER TABLE `compras`
+  ADD CONSTRAINT `compras_ibfk_4` FOREIGN KEY (`contra_cuenta`) REFERENCES `cuentas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`idProveedor`) REFERENCES `proveedores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `compras_ibfk_2` FOREIGN KEY (`idU`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `compras_ibfk_3` FOREIGN KEY (`tipo_cuenta`) REFERENCES `cuentas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
@@ -332,9 +336,9 @@ ALTER TABLE `compras`
 -- Filtros para la tabla `cuentas`
 --
 ALTER TABLE `cuentas`
-  ADD CONSTRAINT `cuentas_ibfk_3` FOREIGN KEY (`tipo`) REFERENCES `tipo_cuenta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cuentas_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cuentas_ibfk_2` FOREIGN KEY (`categoria`) REFERENCES `categoria_cuenta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cuentas_ibfk_2` FOREIGN KEY (`categoria`) REFERENCES `categoria_cuenta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cuentas_ibfk_3` FOREIGN KEY (`tipo`) REFERENCES `tipo_cuenta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `empresas`

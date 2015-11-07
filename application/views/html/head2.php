@@ -57,13 +57,13 @@ td.td-fuente{
     font-size: 1.2em;
     color: white;
 }
-td.L{
+td.L,.L{
     text-align: left;
 }
-td.R{
+td.R,.R{
     text-align: right;
 }
-td.C{
+td.C,.C{
     text-align: center;
 }
     </style>

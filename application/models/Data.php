@@ -182,6 +182,18 @@ AND  `idProveedor` =".$datos['idP']." AND  `tipo_cuenta` LIKE  '".$datos['cta'].
 		
 
 	}
+	//recibe el CODIGO de la cuenta
+	function get_aumenta_por($codigo_cuenta){
+			$query=$this->db->query("SELECT `tipo_cuenta`.`aumenta` FROM `cuentas` , `tipo_cuenta` WHERE `cuentas`.`codigo` LIKE '$codigo_cuenta' AND `tipo` = `tipo_cuenta`.`id` ");
+		return $query->row();
+	}
+
+
+	//recibe el CODIGO de la cuenta
+	function get_disminuye_por($codigo_cuenta){
+			$query=$this->db->query("SELECT `tipo_cuenta`.`disminuye` FROM `cuentas` , `tipo_cuenta` WHERE `cuentas`.`codigo` LIKE '$codigo_cuenta' AND `tipo` = `tipo_cuenta`.`id` ");
+		return $query->row();
+	}
 
 	function get_name_cuenta($codigo){
 

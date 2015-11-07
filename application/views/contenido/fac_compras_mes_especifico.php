@@ -83,3 +83,77 @@
         <?php $this->load->view('menu_opciones/opciones_fac_compras'); ?>
 	</div>
 </div>
+<div class="row">
+        <table class="table">
+            <theader>
+                <tr>
+                <th>FAC.</th>
+                <th>DESCRIPCION</th>
+                <th>DEBE</th>
+                <th>HABER</th>
+                <th>FECHA</th>
+                </tr>
+            </theader>
+            <tbody>
+                <?php 
+                    if ( $this->session->userdata( 'fac_mes_especifico' )  ):
+                                                foreach ($mes_actual as $key => $value) {
+                                                        $fecha=date("d-m-Y",strtotime($value['fecha'])); 
+                                                        $monto_temp=round( $value['monto'],2 );
+                                                        $base_temp=round(( $monto_temp/1.12),2);
+                                                        $iva_temp=round( (($monto_temp /1.12) *12)/100 ,2);
+                                                        $base+=$base_temp;
+                                                        $iva+= $iva_temp;
+                                                        $total+=$monto_temp;  //number_format( numero ,2,',','.') 
+                                                        //". number_format( round( ($monto_temp /1.12) ,2) ,2,',','.')."
+                                                        //". number_format( round( ( ($monto_temp /1.12) *12)/100 ,2) ,2,',','.')."
+                                                        //".number_format( $monto_temp,2,',','.')."
+                                                        echo "
+                                                                <tr>
+                                                                    <td class=\"L\">".$value['nro_fac']."</td>
+                                                                    <td><div class=\"row\">
+                                                                                                                <div class=\"col-lg-4\">".strtoupper($value['descripcion'])."</div>
+                                                                                                                    <div class=\"col-lg-8\">".strtoupper($value['cuenta'])."[ COD. CTA ".$value['tipo_cuenta']." ]
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class=\"row\">
+                                                                                                                <div class=\"col-lg-8\"></div>
+                                                                                                                    <div class=\"col-lg-4\">".strtoupper($value['xcuenta'])."[ COD. CTA ".$value['contra_cuenta']." ]
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                                                                        
+                                                                    </td>
+                                                                    <td class=\"R\">
+                                                                        <div class=\"L\">
+                                                                         "; if($value['aumenta']=='D'){echo $value['monto'];}else{echo "<br>";} echo "   
+                                                                        </div>
+                                                                        <div class=\"L\">
+                                                                         "; if($value['xdisminuye']=='D'){echo $value['monto'];} echo "   
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class=\"R\">
+                                                                    
+                                                                        <div class=\"L\">
+                                                                         "; if($value['aumenta']!='D'){echo $value['monto'];}else{echo "<br>";} echo "   
+                                                                        </div>
+                                                                        <div class=\"L\">
+                                                                         "; if($value['xdisminuye']!='D'){echo $value['monto'];} echo "   
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>". $fecha."</td>
+                                                                </tr>
+                                                        ";
+                                                    }
+                    endif; 
+                ?>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </tbody>
+        </table>
+</div>

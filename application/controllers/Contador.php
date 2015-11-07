@@ -64,8 +64,14 @@ class Contador extends CI_Controller {
 					'nro_control'	=>$value['nro_control'],
 					'monto'			=>$value['monto'],
 					'descripcion'	=>$value['descripcion'],
+					'tipo_cuenta'	=>$value['tipo_cuenta'],
+					'contra_cuenta'	=>$value['contra_cuenta'],
 					'proveedor'		=>$this->data->get_proveedor( $value['idProveedor'] )->razon,
-					'cuenta'		=>$this->data->get_name_cuenta( $value['tipo_cuenta'] )->nombre
+					'cuenta'		=>$this->data->get_name_cuenta( $value['tipo_cuenta'] )->nombre,
+					'aumenta'		=>$this->data->get_aumenta_por( $value['tipo_cuenta'] )->aumenta,
+					'xcuenta'		=>$this->data->get_name_cuenta( $value['contra_cuenta'] )->nombre,
+					'xaumenta'		=>$this->data->get_aumenta_por( $value['contra_cuenta'] )->aumenta,
+					'xdisminuye'	=>$this->data->get_disminuye_por( $value['contra_cuenta'] )->disminuye
 				);
 		}
 					//$this->session->set_userdata( 'fac_mes_especifico',$datos );
