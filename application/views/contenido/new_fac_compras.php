@@ -96,19 +96,29 @@
 
                                             </div>
                                         </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                
+                                                <div class="form-group">
+                                                    <label for="datepicker">Fecha de la Factura</label>
+                                                    <input id="datepicker" name="fecha_fact" type="date" required >   
+                                                </div>
 
+                                            </div>
 
-
-
-                                        <div class="form-group">
-                                            <label for="datepicker">Fecha de la Factura</label>
-                                            <input id="datepicker" name="fecha_fact" type="date" required >   
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label for="mes_afectado">Mes en que afecta la cuenta</label>
+                                                    <input id="mes_afectado" class="date-mes" name="mes_fact" required >   
+                                                </div>                                                
+                                            </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="mes_afectado">Mes en que afecta la cuenta</label>
-                                            <input id="mes_afectado" class="date-mes" name="mes_fact" required >   
-                                        </div>
+
+
+
+
 
                                         <div class="form-group">        
                                                     <div class="row">

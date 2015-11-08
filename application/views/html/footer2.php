@@ -38,11 +38,11 @@
 		monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
 		monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic']
 	});
-	
+
 	/*Activando los campos date con el datepicker*/
 		$("#fecha_fact" ).datepicker();   
 		$("#fecha_factura").datepicker();
-		$('[data-toggle="tooltip"]').tooltip() 
+		$('[data-toggle="tooltip"]').tooltip();
     	$('#tabla').DataTable({
 
     		/*Defino las columnas alineadas a la derecha*/

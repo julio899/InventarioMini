@@ -66,6 +66,11 @@ td.R,.R{
 td.C,.C{
     text-align: center;
 }
+
+.input-group .form-control {
+
+    position: static !important;
+}
     </style>
 
         <!-- jQuery -->
