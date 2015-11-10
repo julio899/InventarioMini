@@ -131,6 +131,8 @@
 
                                                                                                                                                         
                                                                     </td>
+
+
                                                                     <td class=\"R alert-success\">
                                                                         <div class=\"R\">
                                                                          "; if($value['aumenta']=='D'){echo number_format($base_temp,2,',','.');}else{echo "<br>";} echo "   
@@ -144,6 +146,7 @@
                                                                          "; if($value['xdisminuye']=='D'){echo number_format($base_temp,2,',','.');} echo "   
                                                                         </div>
                                                                     </td>
+
                                                                     <td class=\"R alert-warning\">
                                                                     
                                                                         <div class=\"R\">
