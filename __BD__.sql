@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-11-2015 a las 23:40:11
--- Versión del servidor: 5.5.44-0ubuntu0.14.04.1
--- Versión de PHP: 5.5.9-1ubuntu4.13
+-- Tiempo de generación: 09-11-2015 a las 20:51:36
+-- Versión del servidor: 5.5.46-0ubuntu0.14.04.2
+-- Versión de PHP: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -111,12 +111,12 @@ CREATE TABLE IF NOT EXISTS `compras` (
 --
 
 INSERT INTO `compras` (`id`, `idProveedor`, `idU`, `fecha`, `afecta`, `monto`, `tipo`, `descripcion`, `nro_fac`, `nro_control`, `tipo_cuenta`, `contra_cuenta`, `status`, `cod_compa`) VALUES
-(10, 11, 3, '2015-09-07', '09-2015', '6249.47', '', 'COMPRA DE MERCANCIA', '17848', '00-0010098', '2001', '1011', 'A', '0001'),
+(10, 11, 3, '2015-09-07', '09-2015', '6249.47', '', 'COMPRA DE MERCANCIA', '17848', '00-0010098', '2001', '1012', 'A', '0001'),
 (11, 11, 3, '2015-09-25', '09-2015', '5465.61', '', 'COMPRA DE MERCANCIA', '18152', '00-010402', '2001', '1011', 'A', '0001'),
-(12, 12, 3, '2015-09-14', '09-2015', '4849.6', '', 'COMPRADE PINTURAS', 'A0616852', '00-0134616', '2001', '1011', 'A', '0001'),
+(12, 12, 3, '2015-09-14', '09-2015', '4849.6', '', 'COMPRADE PINTURAS', 'A0616852', '00-0134616', '2001', '1010', 'A', '0001'),
 (13, 13, 3, '2015-09-28', '09-2015', '18995.20', '', 'BROCHAS', '7303', '00-007963', '2003', '1011', 'A', '0001'),
-(14, 14, 3, '2015-09-17', '09-2015', '2000', '', 'HONORARIOS CONTABLES', '218', '00-000218', '1016', '1011', 'A', '0001'),
-(15, 13, 3, '2015-09-11', '09-2015', '14728', '', 'COMPRA DE MERCANCIA', '7097', '0-007754', '2003', '1011', 'A', '0001'),
+(14, 14, 3, '2015-09-17', '09-2015', '2000', '', 'HONORARIOS CONTABLES', '218', '00-000218', '1016', '1012', 'A', '0001'),
+(15, 13, 3, '2015-09-11', '09-2015', '14728', '', 'COMPRA DE MERCANCIA', '7097', '0-007754', '2003', '1010', 'A', '0001'),
 (16, 10, 3, '2015-11-06', '11-2015', '100', '', 'APERITIVO', '100', '100', '1016', '1011', 'A', '0001');
 
 -- --------------------------------------------------------
@@ -157,7 +157,7 @@ INSERT INTO `cuentas` (`id`, `codigo`, `nombre`, `status`, `usuario`, `categoria
 (17, '1016', 'GASTOS GENERALES', 'A', 'mari', 1, 1),
 (18, '2001', 'MERCANCIA', 'A', 'mari', 1, 1),
 (19, '2002', 'CUENTAS POR PAGAR', 'A', 'mari', 1, 3),
-(20, '2003', 'MANTENIMIENTO Y REPARACION', 'A', 'mari', 1, 3),
+(20, '2003', 'MANTENIMIENTO Y REPARACION', 'A', 'mari', 1, 1),
 (21, '2004', 'IVA POR PAGAR', 'A', 'mari', 1, 3);
 
 -- --------------------------------------------------------
@@ -327,10 +327,10 @@ ALTER TABLE `categoria_cuenta`
 -- Filtros para la tabla `compras`
 --
 ALTER TABLE `compras`
-  ADD CONSTRAINT `compras_ibfk_4` FOREIGN KEY (`contra_cuenta`) REFERENCES `cuentas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `compras_ibfk_1` FOREIGN KEY (`idProveedor`) REFERENCES `proveedores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `compras_ibfk_2` FOREIGN KEY (`idU`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `compras_ibfk_3` FOREIGN KEY (`tipo_cuenta`) REFERENCES `cuentas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `compras_ibfk_3` FOREIGN KEY (`tipo_cuenta`) REFERENCES `cuentas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `compras_ibfk_4` FOREIGN KEY (`contra_cuenta`) REFERENCES `cuentas` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `cuentas`
