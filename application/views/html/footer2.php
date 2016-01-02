@@ -13,6 +13,8 @@
 	<?php $this->load->view('modal/modificar_producto');?>
 	<?php $this->load->view('modal/crear_proveedor');?>
 	<?php $this->load->view('modal/crear_cliente');?>
+	<?php $this->load->view('modal/nueva_fac_venta');?>
+	<?php $this->load->view('js/new_fac_venta_administrador');?>
 	<?php endif;?>
 
 	<!-- En caso que sea un usuario de tipo contador cargo los modales necesarios -->
@@ -183,12 +185,13 @@
     	}).keyup();
 
 
+
+
 		// Evento Activando Modals seccion [ administrador/cargar_factura ]
     	$("#new_proveedor").click(function(){
     		$("#modal_nuevo_proveedor").modal('show');
     	});
     	
-
 	});
 
 </script>

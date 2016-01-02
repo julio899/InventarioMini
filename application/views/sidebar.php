@@ -16,7 +16,7 @@
 
 
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                        <a href="#" data-toggle="modal" data-target="#modal_nueva_fac_venta"><i class="fa fa-fw fa-edit"></i> Factura de Venta</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Inventario <i class="fa fa-fw fa-caret-down"></i></a>
