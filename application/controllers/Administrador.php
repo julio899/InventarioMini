@@ -161,6 +161,8 @@ class Administrador extends CI_Controller {
 					$this->session->set_flashdata('error',"Error en Validacion de datos. ".validation_errors('<div class="error">', '</div>'));
     				redirect('administrador');
     			}else{
+    				//id del Vendedor de quien es este cliente o quien lo creo
+    				var_dump($this->session->userdata('datos_usuario')['idu']);
     				var_dump($this->input->post());	
     			}
 		}
